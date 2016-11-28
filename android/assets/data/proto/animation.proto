@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package="com.reis.game.resources.prototypes";
+option java_outer_classname="AnimationProto";
+
+import "sprite.proto";
+
+message AnimationData {
+  string spriteMapName = 1;
+  SpriteArrayData spriteArrayData = 2;
+  repeated SpriteData frameData = 3;
+  repeated float frameDurations = 4;
+  bool autoLoop = 5;
+  bool autoInit = 6;
+  string actionClass = 7;
+  int32 orientation = 8;
+}

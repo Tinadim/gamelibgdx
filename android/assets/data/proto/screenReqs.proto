@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_package="com.reis.game.resource.prototype";
+option java_outer_classname="ScreenRequirementsProto";
+
+message ScreenRequirementsData {
+    repeated ScreenRequirementsEntry requirementsForId = 1;
+}
+
+message ScreenRequirementData {
+	string screenName = 1;
+	int32 requiredQuestId = 2;
+	int32 requiredQuestStep = 3;
+}
+
+message ScreenRequirementsEntry {
+    int32 screenId = 1;
+    repeated ScreenRequirementData requirements = 2;
+}

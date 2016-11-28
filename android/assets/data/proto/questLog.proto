@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_package="com.reis.game.resource.prototype";
+option java_outer_classname="QuestLogProto";
+
+import "requirement.proto";
+import "reaction.proto";
+
+message QuestLogData {
+  repeated QuestData questData = 1;
+}
+
+message QuestData {
+  int32 questId = 1;
+  repeated QuestStepData = 2;
+}
+
+message QuestStepData {
+  repeated RequirementData = 1;
+  repeated ReactionData = 2;
+}

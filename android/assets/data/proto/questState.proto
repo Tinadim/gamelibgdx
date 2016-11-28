@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package="com.reis.game.resource.prototype";
+option java_outer_classname="QuestStateProto";
+
+message QuestStateData {
+  repeated QuestStateEntry questStates = 1;
+}
+
+message QuestStateEntry {
+  int32 questId = 1;
+  int32 questStep = 2;
+}

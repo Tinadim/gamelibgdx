@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_package="com.reis.game.resource.prototype";
+option java_outer_classname="ScreenProto";
+
+import "entityType.proto";
+//import "overlay.proto";
+//import "tilemap.proto";
+
+message ScreenData {
+  string backgroundMusicName = 1;
+  string tileMapName = 2;
+  repeated EntityData entityData = 3;
+}
+
+message ScreenNameMapData {
+  map<int32, string> screenIdToNameMap = 1;
+}

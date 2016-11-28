@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package="com.reis.game.resource.prototype";
+option java_outer_classname="RequirementProto";
+
+message RequirementData {
+  int32 type = 1;
+  int32 entityId = 2;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_package="com.reis.game.resource.prototype";
+option java_outer_classname="OverlayProto";
+
+import "sprite.proto";
+
+message OverlayData {
+  string spriteMapName = 1;
+  repeated SpriteData spriteData = 2;
+}
