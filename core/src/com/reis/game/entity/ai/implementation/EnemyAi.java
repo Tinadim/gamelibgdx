@@ -23,7 +23,7 @@ public class EnemyAi extends StateMachineAI {
     }
 
     @Override
-    protected State getInitialState(StateMachineAI ai, AIData aiData) {
+    protected State createStates(StateMachineAI ai, AIData aiData) {
 
         IdleState idleState = new IdleState(ai);
         WanderingState wanderingState = new WanderingState(ai, ProtoUtils.extractWayPoints(aiData));

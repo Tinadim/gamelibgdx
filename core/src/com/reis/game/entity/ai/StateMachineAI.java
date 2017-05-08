@@ -15,10 +15,11 @@ public abstract class StateMachineAI extends AI {
 
     public StateMachineAI (GameEntity entity, AIData aiData) {
         super(entity);
-        this.setState(getInitialState(this, aiData));
+        State initialState = createStates(this, aiData);
+        this.setState(initialState);
     }
 
-    protected abstract State getInitialState(StateMachineAI ai, AIData aiData);
+    protected abstract State createStates(StateMachineAI ai, AIData aiData);
 
     @Override
     public void update(float delta) {

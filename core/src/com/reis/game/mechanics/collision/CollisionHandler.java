@@ -1,4 +1,4 @@
-package com.reis.game.mechanics;
+package com.reis.game.mechanics.collision;
 
 import com.reis.game.entity.GameEntity;
 

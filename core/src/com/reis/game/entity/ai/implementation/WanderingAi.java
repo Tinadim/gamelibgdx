@@ -22,7 +22,7 @@ public class WanderingAi extends StateMachineAI {
     }
 
     @Override
-    protected State getInitialState(StateMachineAI ai, AIData aiData) {
+    protected State createStates(StateMachineAI ai, AIData aiData) {
 
         State idleState = new IdleState(ai);
         State wanderingState = new WanderingState(ai, ProtoUtils.extractWayPoints(aiData));

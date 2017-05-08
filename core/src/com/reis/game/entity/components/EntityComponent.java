@@ -10,8 +10,10 @@ import com.reis.game.entity.GameEntity;
 
 public abstract class EntityComponent implements Component {
 
-    public EntityComponent(GameEntity entity) {
+    protected GameEntity entity;
 
+    public EntityComponent(GameEntity entity) {
+        this.entity = entity;
     }
 
     public void update(GameEntity entity, float delta) {
@@ -20,5 +22,9 @@ public abstract class EntityComponent implements Component {
 
     public void draw(GameEntity entity, Batch batch, float parentAlpha) {
 
+    }
+
+    public GameEntity getEntity() {
+        return this.entity;
     }
 }

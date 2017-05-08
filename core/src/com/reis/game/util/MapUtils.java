@@ -19,6 +19,11 @@ public final class MapUtils {
 
     }
 
+    public static TiledMapTileLayer getForegroundLayer() {
+        TiledMap map = SceneManager.getCurrentScene().getMap();
+        return getForegroundLayer(map);
+    }
+
     public static TiledMapTileLayer getForegroundLayer(TiledMap map) {
         return (TiledMapTileLayer) map.getLayers().get(FOREGROUND_LAYER_NAME);
     }

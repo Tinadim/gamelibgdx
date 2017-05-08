@@ -4,8 +4,14 @@ import com.badlogic.gdx.math.Vector2;
 import com.reis.game.contants.ActionConstants;
 import com.reis.game.entity.GameEntity;
 import com.reis.game.entity.ai.AI;
-import com.reis.game.entity.components.CollisionComponent;
-import com.reis.game.mechanics.CollisionResults;
+import com.reis.game.entity.components.BodyComponent;
+import com.reis.game.entity.components.MovementComponent;
+import com.reis.game.mechanics.collision.CollisionResults;
+
+import static com.reis.game.contants.SceneConstants.EAST;
+import static com.reis.game.contants.SceneConstants.NORTH;
+import static com.reis.game.contants.SceneConstants.SOUTH;
+import static com.reis.game.contants.SceneConstants.WEST;
 
 /**
  * Created by bernardoreis on 11/26/16.
@@ -24,43 +30,34 @@ public class MovementAction extends AiAction {
         this.speed = speed;
     }
 
-    /*public boolean hasArrived(GameEntity entity) {
-        CollisionComponent component = entity.getComponent(CollisionComponent.class);
-        Vector2 currentPosition = component.body.getPosition();
-        Vector2 copy = new Vector2(destination);
-        return copy.sub(currentPosition).len() < ActionConstants.EPSILON;
-    }*/
-
     @Override
-    public void onUpdate(AI ai, float delta) {
+    public void onStart(AI ai) {
+        super.onStart(ai);
         GameEntity entity = ai.getEntity();
-        float remainingX = destination.x - entity.getX();
-        float remainingY = destination.y - entity.getY();
-        if (remainingX == 0 && remainingY == 0) {
-            finished = true;
-            return;
-        }
+        calculateEntityOrientation(entity);
 
-        entity.unbindTiles();
-        float dX = Math.min(Math.abs(remainingX), Math.abs(speed * delta)) * Math.signum(remainingX);
-        float dY = Math.min(Math.abs(remainingY), Math.abs(speed * delta)) * Math.signum(remainingY);
-
-        CollisionComponent collisionComponent = entity.getComponent(CollisionComponent.class);
-        if (collisionComponent != null) {
-            CollisionResults results = collisionComponent.checkCollision(entity, new Vector2(dX, dY));
-            dX = results.stepsWalkedX;
-            dY = results.stepsWalkedY;
-        }
-        entity.moveBy(dX, dY);
-        entity.bindTiles();
-
-        /*CollisionComponent component = entity.getComponent(CollisionComponent.class);
-        if (destination != null && hasArrived(entity)) {
-            component.body.setLinearVelocity(Vector2.Zero);
-            destination = null;
-        } else if(destination != null) {
-            component.body.setLinearVelocity(destination.x * speed, destination.y * speed);
-        }*/
+        MovementComponent component = entity.getComponent(MovementComponent.class);
+        component.moveTo(destination, speed);
     }
 
+    @Override
+    public void onUpdate(AI ai, float deltaTime) {
+        GameEntity entity = ai.getEntity();
+        MovementComponent component = entity.getComponent(MovementComponent.class);
+        if (component.isStopped()) {
+            this.finished = true;
+        }
+    }
+
+    private void calculateEntityOrientation(GameEntity entity) {
+        float distanceX = destination.x - entity.getX();
+        float distanceY = destination.y - entity.getY();
+        int orientation;
+        if (Math.abs(distanceX) >= Math.abs(distanceY)) {
+            orientation = distanceX >= 0 ? EAST : WEST;
+        } else {
+            orientation = distanceY >= 0 ? NORTH : SOUTH;
+        }
+        entity.setOrientation(orientation);
+    }
 }

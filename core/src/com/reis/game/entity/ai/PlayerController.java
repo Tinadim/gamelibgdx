@@ -23,12 +23,14 @@ public class PlayerController extends AI {
             currentAction = action;
             startCurrentAction();
             return true;
-        }
-        else if (action.getPriority() >= currentAction.getPriority()) {
-            stopCurrentAction();
-            currentAction = action;
-            startCurrentAction();
+        } else if (action.getPriority() > currentAction.getPriority()) {
+            replaceCurrentAction(action);
             return true;
+        } else if (action.getPriority() == currentAction.getPriority()) {
+            if (!action.getClass().equals(currentAction.getClass()) || action.isSelfReplaceable()) {
+                replaceCurrentAction(action);
+                return true;
+            }
         }
         return false;
     }
@@ -46,6 +48,12 @@ public class PlayerController extends AI {
         } else {
             currentAction.update(this, delta);
         }
+    }
+
+    private void replaceCurrentAction(AiAction newAction) {
+        stopCurrentAction();
+        currentAction = newAction;
+        startCurrentAction();
     }
 
     public void startCurrentAction() {

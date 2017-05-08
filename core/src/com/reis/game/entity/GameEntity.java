@@ -10,8 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
 import com.reis.game.contants.GameConstants;
 import com.reis.game.contants.SceneConstants;
+import com.reis.game.entity.components.BodyComponent;
 import com.reis.game.entity.components.EntityComponent;
 import com.reis.game.mechanics.TileEntityMap;
+import com.reis.game.scene.SceneManager;
 import com.reis.game.scene.dialog.DialogManager;
 import com.reis.game.util.MapUtils;
 
@@ -27,16 +29,18 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
     protected final int id;
     protected int row, col;
     protected int tileWidth, tileHeight;
-    protected boolean collidable = true;
+    protected int orientation = 0;
     protected boolean interactive = true;
 
     protected Bag<EntityComponent> components;
     private Array<EntityComponent> componentsArray;
     private ImmutableArray<EntityComponent> immutableComponentsArray;
 
-    private List<Vector2> hotspots;
-
     protected String dialog;
+
+    public GameEntity(int id) {
+        this(id, 0, 0);
+    }
 
     public GameEntity(int id, int col, int row) {
         this.components = new Bag<EntityComponent>(16);
@@ -127,66 +131,16 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
             component.draw(this, batch, parentAlpha);
     }
 
-    public List<Vector2> getHotspots() {
-        if (hotspots != null)
-            return hotspots;
-
-        hotspots = new ArrayList<Vector2>(2 * (tileWidth + tileHeight));
-        float x = getX();
-        float y = getY();
-
-        for(int i = 0; i <= tileWidth; i++) {
-            x += i * TILE_SIZE;
-            if (i == tileWidth)
-                x--;
-            hotspots.add(new Vector2(x, y));
-        }
-        for(int i = 1; i <= tileHeight; i++) {
-            y += i * TILE_SIZE;
-            if (i == tileHeight)
-                y--;
-            hotspots.add(new Vector2(x, y));
-        }
-        for(int i = 1; i <= tileWidth; i++) {
-            x -= i * TILE_SIZE;
-            if (i == tileWidth)
-                x++;
-            hotspots.add(new Vector2(x, y));
-        }
-        for(int i = 1; i < tileHeight; i++) {
-            y -= i * TILE_SIZE;
-            if (i == tileHeight)
-                y++;
-            hotspots.add(new Vector2(x, y));
-        }
-        return hotspots;
-    }
-
-    public void invalidateHotspots() {
-        this.hotspots = null;
-    }
-
-    public void bindTiles() {
-        List<Vector2> hotspots = getHotspots();
-        for (Vector2 spot : hotspots) {
-            int row = MapUtils.toTileCoord(spot.y);
-            int col = MapUtils.toTileCoord(spot.x);
-            TileEntityMap.addEntityToTile(this, col, row);
-        }
-    }
-
-    public void unbindTiles() {
-        List<Vector2> hotspots = getHotspots();
-        for (Vector2 spot : hotspots) {
-            int row = MapUtils.toTileCoord(spot.y);
-            int col = MapUtils.toTileCoord(spot.x);
-            TileEntityMap.removeEntityFromTile(this, col, row);
-        }
+    public void moveBy(Vector2 vector) {
+        super.moveBy(vector.x, vector.y);
     }
 
     @Override
     public void positionChanged() {
-        invalidateHotspots();
+        BodyComponent body = getComponent(BodyComponent.class);
+        if (body != null) {
+            body.positionChanged();
+        }
     }
 
     private void calcPosition(int col, int row) {
@@ -218,11 +172,11 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
     }
 
     public int getRow() {
-        return row;
+        return (int) this.getY() / TILE_SIZE;
     }
 
     public int getCol() {
-        return col;
+        return (int) this.getX() / TILE_SIZE;
     }
 
     public void setCoordinates(int col, int row) {
@@ -245,12 +199,12 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
         this.calcSize(tileWidth, tileHeight);
     }
 
-    public boolean isCollidable() {
-        return collidable;
+    public int getOrientation() {
+        return orientation;
     }
 
-    public void setCollidable(boolean collidable) {
-        this.collidable = collidable;
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
     }
 
     public boolean isInteractive() {

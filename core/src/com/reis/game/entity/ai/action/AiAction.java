@@ -15,6 +15,10 @@ public class AiAction {
     public float duration;
     private float elapsedTime;
 
+    protected boolean selfReplaceable = true;
+
+    public AiAction() {}
+
     public AiAction (int priority, String name) {
         this (priority, name, -1);
     }
@@ -45,6 +49,7 @@ public class AiAction {
 
     public void stop(AI ai) {
         this.finished = true;
+        this.onStop(ai);
     }
 
     public void update(AI ai, float delta) {
@@ -60,6 +65,14 @@ public class AiAction {
         this.elapsedTime += delta;
         if (this.elapsedTime > duration)
             finished = true;
+    }
+
+    public boolean isSelfReplaceable() {
+        return selfReplaceable;
+    }
+
+    public void setSelfReplaceable(boolean selfReplaceable) {
+        this.selfReplaceable = selfReplaceable;
     }
 
     public void onStart(AI ai) {

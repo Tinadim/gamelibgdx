@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.reis.game.application.state.ApplicationState;
 import com.reis.game.application.state.InitialState;
 import com.reis.game.application.state.PlayState;
-import com.reis.game.mechanics.CollisionListener;
+import com.reis.game.mechanics.collision.CollisionListener;
 import com.reis.game.state.GameState;
 import com.reis.game.state.StateManager;
 
@@ -68,8 +68,8 @@ public final class GameManager {
     }
 
     public static void initWorld() {
-        world = new World(new Vector2(0, 0f), true);
-        world.setContactListener(new CollisionListener());
+        //world = new World(new Vector2(0, 0f), true);
+        //world.setContactListener(new CollisionListener());
     }
 
     public static World getWorld() {
@@ -77,7 +77,7 @@ public final class GameManager {
     }
 
     public static void updateWorld() {
-        world.step(1f/60f, 8, 3);
+        //world.step(1f/60f, 8, 3);
     }
 
 }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.SnapshotArray;
 import com.reis.game.contants.GameConstants;
 import com.reis.game.contants.SceneConstants;
 import com.reis.game.entity.GameEntity;
+import com.reis.game.entity.components.BodyComponent;
 import com.reis.game.entity.player.Player;
 import com.reis.game.util.EntityComparator;
 import com.reis.game.util.MapUtils;
@@ -52,8 +53,12 @@ public class GameScene extends Scene implements SceneConstants {
 
     private void bindOccupiedTiles() {
         List<GameEntity> entities = SceneUtils.getEntities(this);
-        for (GameEntity entity : entities)
-            entity.bindTiles();
+        for (GameEntity entity : entities) {
+            BodyComponent body = entity.getComponent(BodyComponent.class);
+            if (body != null) {
+                body.bindTiles();
+            }
+        }
     }
 
     private void sortMapEntities() {
@@ -77,6 +82,10 @@ public class GameScene extends Scene implements SceneConstants {
 
     private void checkInputs() {
         Player player = Player.getInstance();
+        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+            player.attack();
+            return;
+        }
         int directionX = Gdx.input.isKeyPressed(Keys.RIGHT) ? 1 :
                 Gdx.input.isKeyPressed(Keys.LEFT) ? -1 : 0;
         int directionY = Gdx.input.isKeyPressed(Keys.UP) ? 1 :
