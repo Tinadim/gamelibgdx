@@ -28,12 +28,12 @@ public class ChasingState extends State {
 
     @Override
     public void onEnterState(StateMachineAI ai) {
-        this.setAction(new MovementAction(entityToChase.getPosition(), DEFAULT_SPEED * .5f));
+        ai.setCurrentAction(new MovementAction(entityToChase.getPosition(), DEFAULT_SPEED * .5f));
     }
 
     @Override
     public void onUpdate(StateMachineAI ai) {
-        this.setAction(new MovementAction(entityToChase.getPosition(), DEFAULT_SPEED * .5f));
+        ai.setCurrentAction(new MovementAction(entityToChase.getPosition(), DEFAULT_SPEED * .5f));
     }
 
     private boolean entityInSight() {

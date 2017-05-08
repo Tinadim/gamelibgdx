@@ -132,6 +132,10 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
     }
 
     public void moveBy(Vector2 vector) {
+        BodyComponent bodyComponent = getComponent(BodyComponent.class);
+        if (bodyComponent != null) {
+            bodyComponent.unbindTiles();
+        }
         super.moveBy(vector.x, vector.y);
     }
 

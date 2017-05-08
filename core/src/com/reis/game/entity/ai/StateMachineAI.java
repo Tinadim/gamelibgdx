@@ -25,6 +25,7 @@ public abstract class StateMachineAI extends AI {
     public void update(float delta) {
         if (paused)
             return;
+        currentAction.update(this, delta);
         currentState.update(this, delta);
     }
 
@@ -33,12 +34,5 @@ public abstract class StateMachineAI extends AI {
             currentState.onLeaveState(this);
         currentState = newState;
         currentState.onEnterState(this);
-    }
-
-    @Override
-    public boolean setCurrentAction(AiAction action) {
-        super.setCurrentAction(action);
-        currentAction.start(this);
-        return true;
     }
 }

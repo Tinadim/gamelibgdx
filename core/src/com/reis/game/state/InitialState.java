@@ -43,7 +43,7 @@ public class InitialState extends GameState {
                     .newBuilder()
                     .setBackgroundMusicName("intro.mp3")
                     .setTileMapName("desert.tmx")
-                    .addEntityData(buildMockNpc())
+                    //.addEntityData(buildMockNpc())
                     //.addEntityData(buildMockEnemy())
                     .build();
 

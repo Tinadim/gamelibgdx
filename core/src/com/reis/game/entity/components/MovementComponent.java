@@ -63,8 +63,7 @@ public class MovementComponent extends EntityComponent {
         float remainingX = destination.x - entity.getX();
         float remainingY = destination.y - entity.getY();
         if (remainingX == 0 && remainingY == 0) {
-            this.destination = null;
-            this.stopped = true;
+            stop();
         } else {
             float dX = Math.min(Math.abs(remainingX), Math.abs(speed * deltaTime)) * Math.signum(remainingX);
             float dY = Math.min(Math.abs(remainingY), Math.abs(speed * deltaTime)) * Math.signum(remainingY);
@@ -74,8 +73,18 @@ public class MovementComponent extends EntityComponent {
                 CollisionResults results = bodyComponent.checkCollisionForMovement(new Vector2(dX, dY));
                 distanceToWalk = results.distanceWalked;
             }
-            entity.moveBy(distanceToWalk);
+
+            if (distanceToWalk.isZero()) {
+                stop();
+            } else {
+                entity.moveBy(distanceToWalk);
+            }
         }
+    }
+
+    private void stop() {
+        this.destination = null;
+        this.stopped = true;
     }
 
     @Override

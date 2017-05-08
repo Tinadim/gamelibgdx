@@ -21,7 +21,7 @@ public class Sword extends Weapon {
     }
 
     private AttackHitbox createAttackHitbox(Attack attack, GameEntity attacker) {
-        AttackHitbox hitbox = new AttackHitbox(attack);
+        AttackHitbox hitbox = new AttackHitbox(attacker, attack);
         hitbox.setDuration(attack.duration);
         hitbox.setTileSize(1, 1);
         calcHitboxPosition(attacker, hitbox);

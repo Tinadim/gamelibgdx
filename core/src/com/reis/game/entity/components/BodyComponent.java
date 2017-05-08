@@ -43,7 +43,6 @@ public class BodyComponent extends EntityComponent {
     public void positionChanged() {
         invalidateHotspots();
         if (SceneManager.getCurrentScene() != null) {
-            unbindTiles();
             bindTiles();
         }
     }
@@ -235,7 +234,7 @@ public class BodyComponent extends EntityComponent {
         return collisionCheckype;
     }
 
-    public void setCollisionCheckype(CollisionCheckType collisionCheckype) {
+    public void setCollisionCheckType(CollisionCheckType collisionCheckype) {
         this.collisionCheckype = collisionCheckype;
     }
 

@@ -58,6 +58,11 @@ public final class Player extends GameEntity {
     }
 
     public void attack() {
+        //TODO find a better way of doing this.
+        if (getAi().getCurrentAction() instanceof AttackAction) {
+            return;
+        }
+        System.out.println("Attacking");
         Attack attack = this.currentWeapon.createAttack(this);
         AttackAction action = new AttackAction(attack);
         getAi().setCurrentAction(action);

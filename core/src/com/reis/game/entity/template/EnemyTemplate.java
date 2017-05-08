@@ -5,6 +5,7 @@ import com.reis.game.entity.GameEntity;
 import com.reis.game.entity.ai.implementation.EnemyAi;
 import com.reis.game.entity.components.AiComponent;
 import com.reis.game.entity.components.BodyComponent;
+import com.reis.game.entity.components.CombatComponent;
 import com.reis.game.entity.components.MovementComponent;
 import com.reis.game.entity.components.SpriteComponent;
 import com.reis.game.resource.prototype.AI.AIData;
@@ -22,6 +23,7 @@ public class EnemyTemplate extends EntityTemplate {
 
         entity.add(new SpriteComponent(entity, Color.RED));
         entity.add(new BodyComponent(entity));
+        entity.add(new CombatComponent(entity));
         entity.add(new MovementComponent(entity));
         entity.add(new AiComponent(entity, new EnemyAi(entity, aiData)));
     }

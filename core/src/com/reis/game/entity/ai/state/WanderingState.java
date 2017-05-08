@@ -31,7 +31,6 @@ public class WanderingState extends State {
     public void onEnterState(StateMachineAI ai) {
         MovementAction action = new MovementAction(getNextWaypoint(), DEFAULT_SPEED);
         ai.setCurrentAction(action);
-        this.setAction(action);
     }
 
     public static TransitionCondition shouldMoveCondition(final GameEntity entity) {

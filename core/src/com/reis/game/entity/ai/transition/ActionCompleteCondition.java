@@ -1,5 +1,6 @@
 package com.reis.game.entity.ai.transition;
 
+import com.reis.game.entity.ai.action.AiAction;
 import com.reis.game.entity.ai.state.State;
 
 /**
@@ -16,6 +17,7 @@ public class ActionCompleteCondition extends TransitionCondition {
 
     @Override
     public boolean avaliate() {
-        return state.getAction().isFinished();
+        AiAction action = state.getAi().getCurrentAction();
+        return action != null && action.isFinished();
     }
 }

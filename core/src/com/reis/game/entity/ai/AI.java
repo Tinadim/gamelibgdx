@@ -10,7 +10,7 @@ import com.reis.game.entity.ai.action.AiAction;
 public abstract class AI {
 
     protected GameEntity entity;
-    protected AiAction currentAction ;
+    protected AiAction currentAction;
     protected boolean paused;
 
     public AI (GameEntity entity) {
@@ -24,7 +24,9 @@ public abstract class AI {
     }
 
     public boolean setCurrentAction(AiAction action) {
+        stopCurrentAction();
         currentAction = action;
+        startCurrentAction();
         return true;
     }
 
@@ -42,5 +44,15 @@ public abstract class AI {
 
     public void setPaused(boolean paused) {
         this.paused = paused;
+    }
+
+    protected void startCurrentAction() {
+        currentAction.start(this);
+    }
+
+    protected void stopCurrentAction() {
+        if (currentAction != null) {
+            currentAction.stop(this);
+        }
     }
 }

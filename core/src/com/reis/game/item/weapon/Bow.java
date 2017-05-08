@@ -21,7 +21,7 @@ public class Bow extends Weapon {
     }
 
     private void createAttackHitbox(Attack attack, GameEntity attacker) {
-        AttackHitbox hitbox = new AttackHitbox(attack);
+        AttackHitbox hitbox = new AttackHitbox(attacker, attack);
         hitbox.setDuration(this.attackSpeed);
         hitbox.setTileSize(1, 1);
         calcHitboxPosition(attacker, hitbox);

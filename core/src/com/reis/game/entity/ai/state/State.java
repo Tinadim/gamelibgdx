@@ -16,21 +16,15 @@ import java.util.List;
 
 public class State implements ActionConstants {
 
+    protected final StateMachineAI ai;
     protected List<StateTransition> transitions;
-    protected AiAction action;
-    protected StateMachineAI ai;
 
     public State(StateMachineAI ai) {
-        this(ai, null, new ArrayList<StateTransition>());
+        this(ai, new ArrayList<StateTransition>());
     }
 
-    public State(StateMachineAI ai, AiAction action) {
-        this(ai, action, new ArrayList<StateTransition>());
-    }
-
-    public State(StateMachineAI ai, AiAction action, List<StateTransition> transitions) {
+    public State(StateMachineAI ai, List<StateTransition> transitions) {
         this.ai = ai;
-        this.action = action;
         this.transitions = transitions;
         this.sortTransitions(transitions);
     }
@@ -48,7 +42,6 @@ public class State implements ActionConstants {
     }
 
     public final void update(StateMachineAI ai, float delta) {
-        this.action.update(ai, delta);
         this.onUpdate(ai);
         this.checkTransitions(ai);
     }
@@ -76,11 +69,7 @@ public class State implements ActionConstants {
         });
     }
 
-    public AiAction getAction() {
-        return action;
-    }
-
-    public void setAction(AiAction action) {
-        this.action = action;
+    public StateMachineAI getAi() {
+        return ai;
     }
 }

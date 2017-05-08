@@ -19,7 +19,7 @@ public class IdleState extends State {
 
     @Override
     public void onEnterState(StateMachineAI ai) {
-        this.setAction(createRandomIdleAction());
+        ai.setCurrentAction(createRandomIdleAction());
     }
 
     private AiAction createRandomIdleAction() {

@@ -6,7 +6,6 @@ import com.reis.game.entity.components.BodyComponent;
 import com.reis.game.entity.components.CombatComponent;
 import com.reis.game.entity.components.SpriteComponent;
 import com.reis.game.mechanics.battle.Attack;
-import com.reis.game.util.MapUtils;
 
 /**
  * Created by bernardoreis on 2/19/17.
@@ -19,16 +18,17 @@ public class AttackHitbox extends GameEntity implements CollisionListener {
 
     private final Attack attack;
 
-    public AttackHitbox(Attack attack) {
+    public AttackHitbox(GameEntity source, Attack attack) {
         super(-1);
         this.attack = attack;
-        this.createBody();
+        this.createBody(source);
     }
 
-    private void createBody() {
+    private void createBody(GameEntity source) {
         BodyComponent bodyComponent = new BodyComponent(this);
         bodyComponent.setIgnoreSameType(true);
         bodyComponent.addCollisionListener(this);
+        bodyComponent.setCollisionCheckType(BodyComponent.CollisionCheckType.PASSIVE);
         this.add(bodyComponent);
 
         //TODO remove this
@@ -40,7 +40,7 @@ public class AttackHitbox extends GameEntity implements CollisionListener {
     public void act(float delta) {
         if (this.duration > -1) {
             this.elapsedTime += delta;
-            if (this.elapsedTime > this.duration) {
+            if (this.elapsedTime >= this.duration) {
                 this.removeSelf();
                 return;
             }
