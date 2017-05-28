@@ -1,7 +1,5 @@
 package com.reis.game.entity.components;
 
-import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.reis.game.entity.GameEntity;
 import com.reis.game.mechanics.battle.Attack;
 
@@ -26,7 +24,9 @@ public class CombatComponent extends EntityComponent {
     }
 
     public void onHitTaken(Attack attack) {
-        Action blink = Actions.repeat(5, Actions.sequence(Actions.fadeIn(0.5f), Actions.fadeOut(0.5f)));
-        this.entity.addAction(blink);
+        SpriteComponent sprite = this.entity.getComponent(SpriteComponent.class);
+        if (sprite != null) {
+            sprite.blink();
+        }
     }
 }

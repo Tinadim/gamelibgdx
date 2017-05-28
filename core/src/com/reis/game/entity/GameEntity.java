@@ -128,7 +128,7 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         for(EntityComponent component : getComponents())
-            component.draw(this, batch, parentAlpha);
+            component.draw(this, batch, this.getColor().a);
     }
 
     public void moveBy(Vector2 vector) {

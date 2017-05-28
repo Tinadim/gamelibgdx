@@ -11,7 +11,7 @@ import com.reis.game.resource.prototype.AI.AIData;
 
 public abstract class StateMachineAI extends AI {
 
-    public State currentState;
+    public State currentState, previousState;
 
     public StateMachineAI (GameEntity entity, AIData aiData) {
         super(entity);
@@ -34,5 +34,24 @@ public abstract class StateMachineAI extends AI {
             currentState.onLeaveState(this);
         currentState = newState;
         currentState.onEnterState(this);
+    }
+
+    public void interruptCurrentState(State newState) {
+        if (currentState != null) {
+            currentState.onPauseState(this);
+            previousState = currentState;
+        }
+        currentState = newState;
+        currentState.onEnterState(this);
+    }
+
+    public void resumePreviousState() {
+        if (currentState != null) {
+            currentState.onLeaveState(this);
+        }
+        if (previousState != null) {
+            currentState = previousState;
+            currentState.onReturnToState(this);
+        }
     }
 }

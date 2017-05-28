@@ -35,6 +35,8 @@ public class State implements ActionConstants {
 
     public void onLeaveState(StateMachineAI ai) {}
 
+    public void onPauseState(StateMachineAI ai) {}
+
     public void onReturnToState(StateMachineAI ai) {}
 
     public void addTransition(StateTransition transition) {

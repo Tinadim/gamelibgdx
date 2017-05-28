@@ -22,6 +22,7 @@ public interface ActionConstants {
 
     public static final float DEFAULT_SPEED = 200f;
     public static final float DEFAULT_RUN_SPEED = 2 * DEFAULT_SPEED;
+    public static final float KNOCKBACK_RUN_SPEED = 4 * DEFAULT_SPEED;
     public static final float EPSILON = 0.001f;
 
     public static final float BASE_TURN_DURATION = 1;      //seconds
