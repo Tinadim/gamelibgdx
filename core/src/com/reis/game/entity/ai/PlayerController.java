@@ -8,14 +8,29 @@ import com.reis.game.entity.ai.action.IdleAction;
  * Created by bernardoreis on 11/26/16.
  */
 
-public class PlayerController extends AI {
+public class PlayerController extends EntityController {
+
+    private AiAction currentAction;
 
     public PlayerController(GameEntity entity) {
         super(entity);
         this.setCurrentAction(new IdleAction());
     }
 
-    @Override
+    private void startCurrentAction() {
+        currentAction.start(this);
+    }
+
+    private void stopCurrentAction() {
+        if (currentAction != null) {
+            currentAction.stop(this);
+        }
+    }
+
+    public AiAction getCurrentAction() {
+        return currentAction;
+    }
+
     public boolean setCurrentAction(AiAction action) {
         if (action == null)
             throw new IllegalArgumentException("Action must not be null");
@@ -24,13 +39,24 @@ public class PlayerController extends AI {
             startCurrentAction();
             return true;
         } else if (action.getPriority() > currentAction.getPriority()) {
-            return super.setCurrentAction(action);
+            return setAction(action);
         } else if (action.getPriority() == currentAction.getPriority()) {
             if (!action.getClass().equals(currentAction.getClass()) || action.isSelfReplaceable()) {
-                return super.setCurrentAction(action);
+                return setAction(action);
             }
         }
         return false;
+    }
+
+    private boolean setAction(AiAction action) {
+        stopCurrentAction();
+        currentAction = action;
+        startCurrentAction();
+        return true;
+    }
+
+    public boolean forceAction(AiAction action) {
+        return setCurrentAction(action);
     }
 
     @Override
@@ -39,7 +65,7 @@ public class PlayerController extends AI {
             return;
         } if (currentAction == null) {
             setCurrentAction(new IdleAction());
-        } else if (currentAction.isFinished()) {
+        } else if (currentAction.checkFinished(this)) {
             currentAction.onComplete(this);
             currentAction = null;
             setCurrentAction(new IdleAction());

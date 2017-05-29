@@ -2,7 +2,7 @@ syntax = "proto3";
 option java_package="com.reis.game.resource.prototype";
 option java_outer_classname="EntityTypeProto";
 
-import "ai.proto";
+import "entityController.proto";
 
 message EntityData {
   int32 id = 1;

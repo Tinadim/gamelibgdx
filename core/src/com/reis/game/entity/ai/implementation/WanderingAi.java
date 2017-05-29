@@ -24,21 +24,21 @@ public class WanderingAi extends StateMachineAI {
     @Override
     protected State createStates(StateMachineAI ai, AIData aiData) {
 
-        State idleState = new IdleState(ai);
-        State wanderingState = new WanderingState(ai, ProtoUtils.extractWayPoints(aiData));
-        State interactingState = new InteractingState(ai);
+        State idleState = new IdleState();
+        State wanderingState = new WanderingState(ProtoUtils.extractWayPoints(aiData));
+        State interactingState = new InteractingState();
 
         StateTransition idleToIdle = new StateTransition(idleState, 0);
         StateTransition idleToWandering = new StateTransition(wanderingState, 1);
         StateTransition wanderingToIdle = new StateTransition(idleState);
         StateTransition interactingToIdle = new StateTransition(idleState);
 
-        idleToIdle.addCondition(new ActionCompleteCondition(idleState));
-        idleToWandering.addCondition(new ActionCompleteCondition(idleState));
+        idleToIdle.addCondition(new ActionCompleteCondition());
+        idleToWandering.addCondition(new ActionCompleteCondition());
         idleToWandering.addCondition(IdleState.createShouldIdleCondition());
         idleToWandering.addCondition(WanderingState.shouldMoveCondition(entity));
-        wanderingToIdle.addCondition(new ActionCompleteCondition(wanderingState));
-        interactingToIdle.addCondition(new ActionCompleteCondition(interactingState));
+        wanderingToIdle.addCondition(new ActionCompleteCondition());
+        interactingToIdle.addCondition(new ActionCompleteCondition());
 
         idleState.addTransition(idleToIdle);
         idleState.addTransition(idleToWandering);

@@ -8,7 +8,7 @@ import com.reis.game.entity.ai.PlayerController;
 import com.reis.game.entity.ai.action.AttackAction;
 import com.reis.game.entity.ai.action.IdleAction;
 import com.reis.game.entity.ai.action.MovementAction;
-import com.reis.game.entity.components.AiComponent;
+import com.reis.game.entity.components.EntityControllerComponent;
 import com.reis.game.entity.template.PlayerTemplate;
 import com.reis.game.item.weapon.Sword;
 import com.reis.game.item.weapon.Weapon;
@@ -42,19 +42,12 @@ public final class Player extends GameEntity {
     }
 
     public void idle() {
-        AiComponent component = this.getComponent(AiComponent.class);
-        component.getAi().setCurrentAction(new IdleAction());
+        getAi().setCurrentAction(new IdleAction());
     }
 
     public void move(Vector2 direction) {
         direction.add(this.getX(), this.getY());
         getAi().setCurrentAction(new MovementAction(direction, ActionConstants.DEFAULT_SPEED));
-        /*MovementComponent component = this.getComponent(MovementComponent.class);
-        if (!direction.equals(Vector2.Zero)) {
-            component.move(this, direction);
-        } else {
-            component.stop(this);
-        }*/
     }
 
     public void attack() {
@@ -68,7 +61,7 @@ public final class Player extends GameEntity {
     }
 
     private PlayerController getAi() {
-        AiComponent component = this.getComponent(AiComponent.class);
-        return (PlayerController) component.getAi();
+        EntityControllerComponent component = this.getComponent(EntityControllerComponent.class);
+        return (PlayerController) component.getEntityController();
     }
 }

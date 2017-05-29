@@ -5,6 +5,7 @@ import com.reis.game.entity.GameEntity;
 import com.reis.game.mechanics.TileEntityMap;
 import com.reis.game.mechanics.collision.Collision;
 import com.reis.game.mechanics.collision.CollisionDetector;
+import com.reis.game.mechanics.collision.CollisionHandler;
 import com.reis.game.mechanics.collision.CollisionListener;
 import com.reis.game.mechanics.collision.CollisionResults;
 import com.reis.game.scene.SceneManager;
@@ -164,6 +165,7 @@ public class BodyComponent extends EntityComponent {
     private void resolveCollisions(CollisionResults results) {
         if (results.collisions != null && results.collisions.size() > 0) {
             for (Collision collision : results.collisions) {
+                CollisionHandler.handleCollision(collision.entity, collision.collidedWith);
                 notifyListeners(collision);
             }
         }

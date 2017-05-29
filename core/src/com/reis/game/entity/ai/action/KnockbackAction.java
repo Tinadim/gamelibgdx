@@ -2,11 +2,12 @@ package com.reis.game.entity.ai.action;
 
 import com.badlogic.gdx.math.Vector2;
 import com.reis.game.contants.ActionConstants;
+import com.reis.game.contants.GameConstants;
 import com.reis.game.entity.GameEntity;
-import com.reis.game.entity.ai.AI;
+import com.reis.game.entity.ai.EntityController;
 import com.reis.game.entity.components.MovementComponent;
+import com.reis.game.mechanics.battle.Attack;
 import com.reis.game.mechanics.collision.AttackHitbox;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 
 /**
  * Created by bernardoreis on 5/21/17.
@@ -14,18 +15,19 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 
 public class KnockbackAction extends AiAction {
 
-    private AttackHitbox damageSource;
+    private Attack damageSource;
 
     private int knockbackDistanceInTiles = 5;
 
-    public KnockbackAction() {
+    public KnockbackAction(Attack damageSource) {
         super(ActionConstants.KNOCKBACK_PRIORITY, ActionConstants.KNOCKBACK_NAME);
+        this.damageSource = damageSource;
     }
 
     @Override
-    public void onStart(AI ai) {
-        super.onStart(ai);
-        GameEntity entity = ai.getEntity();
+    public void onStart(EntityController entityController) {
+        super.onStart(entityController);
+        GameEntity entity = entityController.getEntity();
         Vector2 destination = calcDestination(entity);
         MovementComponent component = entity.getComponent(MovementComponent.class);
         if (component != null) {
@@ -33,11 +35,19 @@ public class KnockbackAction extends AiAction {
         }
     }
 
+    @Override
+    public boolean checkFinished(EntityController entityController) {
+        GameEntity entity = entityController.getEntity();
+        MovementComponent component = entity.getComponent(MovementComponent.class);
+        return component != null && component.isStopped();
+    }
+
     private Vector2 calcDestination(GameEntity entity) {
-        float x = entity.getX();
-        float y = entity.getY();
-        float dX = Math.signum(x - damageSource.getX()) * knockbackDistanceInTiles;
-        float dY = Math.signum(y - damageSource.getY()) * knockbackDistanceInTiles;
-        return new Vector2(x + dX, y + dY);
+        AttackHitbox hitbox = this.damageSource.hitbox;
+        float x = entity.getCenterX();
+        float y = entity.getCenterY();
+        float dX = Math.signum(x - hitbox.getCenterX()) * knockbackDistanceInTiles * GameConstants.TILE_SIZE;
+        float dY = Math.signum(y - hitbox.getCenterY()) * knockbackDistanceInTiles * GameConstants.TILE_SIZE;
+        return new Vector2(entity.getX() + dX, entity.getY() + dY);
     }
 }

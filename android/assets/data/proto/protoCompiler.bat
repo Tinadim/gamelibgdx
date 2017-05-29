@@ -1,7 +1,7 @@
 SET DEST=D:\Workspace\Android\Game_v4\src
 protoc sprite.proto --java_out="%DEST%"
 protoc animation.proto --java_out="%DEST%"
-protoc ai.proto --java_out="%DEST%"
+protoc entityController.proto --java_out="%DEST%"
 protoc entityType.proto --java_out="%DEST%"
 protoc entity.proto --java_out="%DEST%"
 protoc tilemap.proto --java_out="%DEST%"

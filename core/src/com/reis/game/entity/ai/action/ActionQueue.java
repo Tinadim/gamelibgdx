@@ -1,6 +1,6 @@
 package com.reis.game.entity.ai.action;
 
-import com.reis.game.entity.ai.AI;
+import com.reis.game.entity.ai.EntityController;
 
 import java.util.LinkedList;
 
@@ -29,34 +29,37 @@ public class ActionQueue extends AiAction {
         }
     }
 
-    private void nextAction(AI ai) {
-        if(this.actions.isEmpty())
-            this.finished = true;
-        else {
+    private void nextAction(EntityController entityController) {
+        if (!this.actions.isEmpty()) {
             this.currentAction = this.actions.poll();
-            this.currentAction.start(ai);
+            this.currentAction.start(entityController);
         }
     }
 
     @Override
-    public void start(AI ai) {
-        nextAction(ai);
+    public boolean checkFinished(EntityController entityController) {
+        return this.actions.isEmpty();
     }
 
     @Override
-    public void update(AI ai, float delta) {
-        if(this.currentAction.isFinished()) {
-            this.currentAction.onComplete(ai);
-            nextAction(ai);
+    public void onStart(EntityController entityController) {
+        nextAction(entityController);
+    }
+
+    @Override
+    public void onUpdate(EntityController entityController, float delta) {
+        if(this.currentAction.checkFinished(entityController)) {
+            this.currentAction.onComplete(entityController);
+            nextAction(entityController);
         } else {
-            this.currentAction.update(ai, delta);
+            this.currentAction.update(entityController, delta);
         }
     }
 
     @Override
-    public void stop(AI ai) {
+    public void onStop(EntityController entityController) {
         if(this.currentAction != null)
-            this.currentAction.stop(ai);
+            this.currentAction.stop(entityController);
         this.currentAction = null;
     }
 

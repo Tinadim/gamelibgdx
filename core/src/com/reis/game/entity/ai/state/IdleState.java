@@ -13,13 +13,9 @@ import com.reis.game.util.Utils;
 
 public class IdleState extends State {
 
-    public IdleState(StateMachineAI ai) {
-        super(ai);
-    }
-
     @Override
     public void onEnterState(StateMachineAI ai) {
-        ai.setCurrentAction(createRandomIdleAction());
+        this.action = createRandomIdleAction();
     }
 
     private AiAction createRandomIdleAction() {
@@ -31,7 +27,7 @@ public class IdleState extends State {
     public static TransitionCondition createShouldIdleCondition() {
         return new TransitionCondition() {
             @Override
-            public boolean avaliate() {
+            public boolean avaliate(StateMachineAI ai) {
                 return ResourceManager.random.nextBoolean();
             }
         };

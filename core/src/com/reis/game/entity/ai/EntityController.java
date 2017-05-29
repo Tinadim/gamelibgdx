@@ -7,28 +7,17 @@ import com.reis.game.entity.ai.action.AiAction;
  * Created by bernardoreis on 11/26/16.
  */
 
-public abstract class AI {
+public abstract class EntityController {
 
     protected GameEntity entity;
-    protected AiAction currentAction;
+
     protected boolean paused;
 
-    public AI (GameEntity entity) {
+    public EntityController(GameEntity entity) {
         this.entity = entity;
     }
 
     public abstract void update (float delta);
-
-    public AiAction getCurrentAction () {
-        return currentAction;
-    }
-
-    public boolean setCurrentAction(AiAction action) {
-        stopCurrentAction();
-        currentAction = action;
-        startCurrentAction();
-        return true;
-    }
 
     public GameEntity getEntity() {
         return entity;
@@ -46,13 +35,5 @@ public abstract class AI {
         this.paused = paused;
     }
 
-    protected void startCurrentAction() {
-        currentAction.start(this);
-    }
-
-    protected void stopCurrentAction() {
-        if (currentAction != null) {
-            currentAction.stop(this);
-        }
-    }
+    public abstract boolean forceAction(AiAction action);
 }

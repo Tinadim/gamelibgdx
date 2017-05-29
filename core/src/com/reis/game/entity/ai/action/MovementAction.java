@@ -3,10 +3,8 @@ package com.reis.game.entity.ai.action;
 import com.badlogic.gdx.math.Vector2;
 import com.reis.game.contants.ActionConstants;
 import com.reis.game.entity.GameEntity;
-import com.reis.game.entity.ai.AI;
-import com.reis.game.entity.components.BodyComponent;
+import com.reis.game.entity.ai.EntityController;
 import com.reis.game.entity.components.MovementComponent;
-import com.reis.game.mechanics.collision.CollisionResults;
 
 import static com.reis.game.contants.SceneConstants.EAST;
 import static com.reis.game.contants.SceneConstants.NORTH;
@@ -31,9 +29,9 @@ public class MovementAction extends AiAction {
     }
 
     @Override
-    public void onStart(AI ai) {
-        super.onStart(ai);
-        GameEntity entity = ai.getEntity();
+    public void onStart(EntityController entityController) {
+        super.onStart(entityController);
+        GameEntity entity = entityController.getEntity();
         calculateEntityOrientation(entity);
 
         MovementComponent component = entity.getComponent(MovementComponent.class);
@@ -41,12 +39,17 @@ public class MovementAction extends AiAction {
     }
 
     @Override
-    public void onUpdate(AI ai, float deltaTime) {
-        GameEntity entity = ai.getEntity();
+    public void onStop(EntityController entityController) {
+        GameEntity entity = entityController.getEntity();
         MovementComponent component = entity.getComponent(MovementComponent.class);
-        if (component.isStopped()) {
-            this.finished = true;
-        }
+        component.setStopped(true);
+    }
+
+    @Override
+    public boolean checkFinished(EntityController entityController) {
+        GameEntity entity = entityController.getEntity();
+        MovementComponent component = entity.getComponent(MovementComponent.class);
+        return component.isStopped();
     }
 
     private void calculateEntityOrientation(GameEntity entity) {

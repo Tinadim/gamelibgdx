@@ -1,6 +1,10 @@
 package com.reis.game.entity.ai.action;
 
-import com.reis.game.entity.ai.AI;
+import com.reis.game.entity.ai.EntityController;
+import com.reis.game.entity.ai.StateMachineAI;
+import com.reis.game.entity.ai.state.State;
+import com.reis.game.entity.ai.transition.ActionCompleteCondition;
+import com.reis.game.entity.ai.transition.StateTransition;
 
 /**
  * Created by bernardoreis on 11/26/16.
@@ -12,8 +16,6 @@ public class AiAction {
     public int priority;
     public boolean finished;
     public boolean paused;
-    public float duration;
-    private float elapsedTime;
 
     protected boolean selfReplaceable = true;
 
@@ -26,7 +28,6 @@ public class AiAction {
     public AiAction(int priority, String name, float duration)  {
         this.name = name;
         this.priority = priority;
-        this.duration = duration;
         this.finished = false;
         this.paused = false;
     }
@@ -35,36 +36,25 @@ public class AiAction {
         return priority;
     }
 
-    public boolean isFinished() {
-        return finished;
+    public final void start(EntityController entityController) {
+        this.onStart(entityController);
     }
 
-    public void setFinished(boolean finished) {
-        this.finished = finished;
-    }
-
-    public void start(AI ai) {
-        onStart(ai);
-    }
-
-    public void stop(AI ai) {
+    public final void stop(EntityController entityController) {
         this.finished = true;
-        this.onStop(ai);
+        this.onStop(entityController);
     }
 
-    public void update(AI ai, float delta) {
+    public final void update(EntityController entityController, float delta) {
         if (paused)
             return;
-        if (duration > -1)
-            checkFinished(ai, delta);
+        boolean finished = checkFinished(entityController);
         if (!finished)
-            onUpdate(ai, delta);
+            onUpdate(entityController, delta);
     }
 
-    private void checkFinished(AI ai, float delta) {
-        this.elapsedTime += delta;
-        if (this.elapsedTime > duration)
-            finished = true;
+    public boolean checkFinished(EntityController entityController) {
+        return false;
     }
 
     public boolean isSelfReplaceable() {
@@ -75,19 +65,19 @@ public class AiAction {
         this.selfReplaceable = selfReplaceable;
     }
 
-    public void onStart(AI ai) {
+    protected void onStart(EntityController entityController) {}
 
-    }
+    protected void onStop(EntityController entityController) {}
 
-    public void onStop(AI ai) {
+    protected void onUpdate(EntityController entityController, float delta) {}
 
-    }
+    public void onComplete(EntityController entityController) {}
 
-    public void onUpdate(AI ai, float delta) {
-
-    }
-
-    public void onComplete(AI ai) {
-
+    public State createStateFromAction(StateMachineAI ai) {
+        State state = new State(this);
+        StateTransition transition = new StateTransition(ai.getCurrentState());
+        transition.addCondition(new ActionCompleteCondition());
+        state.addTransition(transition);
+        return state;
     }
 }

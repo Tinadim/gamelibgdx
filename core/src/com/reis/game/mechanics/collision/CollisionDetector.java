@@ -20,7 +20,7 @@ public class CollisionDetector {
     public static CollisionResults checkCollision(GameEntity entity) {
         CollisionResults results = new CollisionResults();
         BodyComponent body = entity.getComponent(BodyComponent.class);
-        if (body != null && body.isCollidable) {
+        if (body != null) {
             List<Vector2> hotspots = body.getHotspots();
             for (Vector2 hotspot : hotspots) {
                 testCollisionsForHotspot(entity, hotspot, Vector2.Zero, results);
@@ -33,7 +33,7 @@ public class CollisionDetector {
 
         CollisionResults results = new CollisionResults();
         BodyComponent body = entity.getComponent(BodyComponent.class);
-        if (body == null || !body.isCollidable) {
+        if (body == null) {
             results.distanceWalked = movement;
             return results;
         }
@@ -112,6 +112,7 @@ public class CollisionDetector {
 
         results.addCollision(new Collision(entity, entityToTest, intersection));
         results.collided = true;
-        return true;
+        BodyComponent entityBody = entityToTest.getComponent(BodyComponent.class);
+        return entityBody != null && entityBody.isCollidable();
     }
 }

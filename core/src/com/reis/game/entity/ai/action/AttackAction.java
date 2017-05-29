@@ -1,14 +1,14 @@
 package com.reis.game.entity.ai.action;
 
 import com.reis.game.contants.ActionConstants;
-import com.reis.game.entity.ai.AI;
+import com.reis.game.entity.ai.EntityController;
 import com.reis.game.mechanics.battle.Attack;
 
 /**
  * Created by bernardoreis on 12/26/16.
  */
 
-public class AttackAction extends AiAction {
+public class AttackAction extends DurationBasedAction {
 
     private Attack attack;
 
@@ -19,7 +19,7 @@ public class AttackAction extends AiAction {
         this.selfReplaceable = false;
     }
 
-    public void onStart(AI ai) {
+    public void onStart(EntityController entityController) {
         this.attack.fire();
     }
 }

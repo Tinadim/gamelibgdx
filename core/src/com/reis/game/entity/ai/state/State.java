@@ -16,24 +16,40 @@ import java.util.List;
 
 public class State implements ActionConstants {
 
-    protected final StateMachineAI ai;
+    protected AiAction action;
     protected List<StateTransition> transitions;
 
-    public State(StateMachineAI ai) {
-        this(ai, new ArrayList<StateTransition>());
+    public State() {
+        this(null);
     }
 
-    public State(StateMachineAI ai, List<StateTransition> transitions) {
-        this.ai = ai;
+    public State(AiAction action) {
+        this(action, new ArrayList<StateTransition>());
+    }
+
+    public State(AiAction action, List<StateTransition> transitions) {
+        this.action = action;
         this.transitions = transitions;
         this.sortTransitions(transitions);
     }
 
     public void onUpdate(StateMachineAI ai) {}
 
-    public void onEnterState(StateMachineAI ai) {}
+    public final void enterState(StateMachineAI ai) {
+        this.onEnterState(ai);
+        this.action.start(ai);
+    }
 
-    public void onLeaveState(StateMachineAI ai) {}
+    protected void onEnterState(StateMachineAI ai) {}
+
+    public final void leaveState(StateMachineAI ai) {
+        this.onLeaveState(ai);
+        if (!this.action.checkFinished(ai)) {
+            this.action.stop(ai);
+        }
+    }
+
+    protected void onLeaveState(StateMachineAI ai) {}
 
     public void onPauseState(StateMachineAI ai) {}
 
@@ -44,13 +60,18 @@ public class State implements ActionConstants {
     }
 
     public final void update(StateMachineAI ai, float delta) {
+        if (this.action == null) {
+            throw new IllegalStateException("Action cannot be null. Either provide in state constructor " +
+                    "or instantiate it inside onEnterState");
+        }
+        this.action.update(ai, delta);
         this.onUpdate(ai);
         this.checkTransitions(ai);
     }
 
     private void checkTransitions(StateMachineAI ai) {
         for (StateTransition transition : transitions) {
-            boolean shouldExecuteTransition = transition.shouldExecute();
+            boolean shouldExecuteTransition = transition.shouldExecute(ai);
             if (shouldExecuteTransition) {
                 transition.execute(ai);
                 return;
@@ -71,7 +92,7 @@ public class State implements ActionConstants {
         });
     }
 
-    public StateMachineAI getAi() {
-        return ai;
+    public AiAction getAction() {
+        return action;
     }
 }

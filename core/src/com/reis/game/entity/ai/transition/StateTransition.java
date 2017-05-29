@@ -31,10 +31,20 @@ public class StateTransition {
         this.priority = priority;
     }
 
-    public boolean shouldExecute() {
-        if (conditions == null || conditions.isEmpty())
+    public boolean shouldExecute(StateMachineAI ai) {
+        if (conditions == null || conditions.isEmpty()) {
             return true;
-        return ConditionEvaluator.areConditionsFulfilled(conditions);
+        }
+        return checkConditionsFulfilled(conditions, ai);
+    }
+
+    public static boolean checkConditionsFulfilled(List<? extends TransitionCondition> conditions, StateMachineAI ai) {
+        for (TransitionCondition condition : conditions) {
+            boolean conditionFulfilled = condition.avaliate(ai);
+            if (!conditionFulfilled)
+                return false;
+        }
+        return true;
     }
 
     public void execute(StateMachineAI ai) {

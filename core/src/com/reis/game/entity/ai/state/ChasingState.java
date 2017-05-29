@@ -16,45 +16,45 @@ public class ChasingState extends State {
     private GameEntity entityToChase;
     private int rangeOfSight;
 
-    public ChasingState(StateMachineAI ai, GameEntity entityToChase) {
-        this(ai, entityToChase, DEFAULT_RANGE_OF_SIGHT);
+    public ChasingState(GameEntity entityToChase) {
+        this(entityToChase, DEFAULT_RANGE_OF_SIGHT);
     }
 
-    public ChasingState(StateMachineAI ai, GameEntity entityToChase, int rangeOfSight) {
-        super(ai);
+    public ChasingState(GameEntity entityToChase, int rangeOfSight) {
         this.entityToChase = entityToChase;
         this.rangeOfSight = (int) MapUtils.toCoord(rangeOfSight);
     }
 
     @Override
     public void onEnterState(StateMachineAI ai) {
-        ai.setCurrentAction(new MovementAction(entityToChase.getPosition(), DEFAULT_SPEED * .5f));
+        this.action = new MovementAction(entityToChase.getPosition(), DEFAULT_SPEED * .5f);
     }
 
     @Override
     public void onUpdate(StateMachineAI ai) {
-        ai.setCurrentAction(new MovementAction(entityToChase.getPosition(), DEFAULT_SPEED * .5f));
+        this.action = new MovementAction(entityToChase.getPosition(), DEFAULT_SPEED * .5f);
+        this.action.start(ai);
     }
 
-    private boolean entityInSight() {
-        Vector2 distance = this.ai.getEntity().getPosition().sub(entityToChase.getPosition());
+    private boolean entityInSight(GameEntity entity) {
+        Vector2 distance = entity.getPosition().sub(entityToChase.getPosition());
         return Math.abs(distance.x) <= rangeOfSight && Math.abs(distance.y) <= rangeOfSight;
     }
 
-    public TransitionCondition entityNear() {
+    public TransitionCondition entityNear(final GameEntity entity) {
         return new TransitionCondition() {
             @Override
-            public boolean avaliate() {
-                return entityInSight();
+            public boolean avaliate(StateMachineAI ai) {
+                return entityInSight(entity);
             }
         };
     }
 
-    public TransitionCondition entityOutOfSight() {
+    public TransitionCondition entityOutOfSight(final GameEntity entity) {
         return new TransitionCondition() {
             @Override
-            public boolean avaliate() {
-                return !entityInSight();
+            public boolean avaliate(StateMachineAI ai) {
+                return !entityInSight(entity);
             }
         };
     }

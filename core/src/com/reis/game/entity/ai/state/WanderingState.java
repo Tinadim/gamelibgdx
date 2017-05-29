@@ -17,8 +17,7 @@ public class WanderingState extends State {
 
     protected Vector2[] waypoints;
 
-    public WanderingState(StateMachineAI ai, Vector2[] waypoints) {
-        super(ai);
+    public WanderingState(Vector2[] waypoints) {
         this.waypoints = waypoints;
     }
 
@@ -29,14 +28,13 @@ public class WanderingState extends State {
     }
 
     public void onEnterState(StateMachineAI ai) {
-        MovementAction action = new MovementAction(getNextWaypoint(), DEFAULT_SPEED);
-        ai.setCurrentAction(action);
+        this.action = new MovementAction(getNextWaypoint(), DEFAULT_SPEED);
     }
 
     public static TransitionCondition shouldMoveCondition(final GameEntity entity) {
         return new TransitionCondition() {
             @Override
-            public boolean avaliate() {
+            public boolean avaliate(StateMachineAI ai) {
                 return entity.hasComponent(MovementComponent.class);
             }
         };

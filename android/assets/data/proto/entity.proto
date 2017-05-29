@@ -4,7 +4,7 @@ option java_outer_classname="EntityProto";
 
 import "animation.proto";
 import "sprite.proto";
-import "ai.proto";
+import "entityController.proto";
 
 message EntityData {
   string className = 1;

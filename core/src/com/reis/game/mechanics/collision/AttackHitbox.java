@@ -26,6 +26,7 @@ public class AttackHitbox extends GameEntity implements CollisionListener {
 
     private void createBody(GameEntity source) {
         BodyComponent bodyComponent = new BodyComponent(this);
+        bodyComponent.setCollidable(false);
         bodyComponent.setIgnoreSameType(true);
         bodyComponent.addCollisionListener(this);
         bodyComponent.setCollisionCheckType(BodyComponent.CollisionCheckType.PASSIVE);
@@ -69,5 +70,9 @@ public class AttackHitbox extends GameEntity implements CollisionListener {
 
     public void setDuration(float duration) {
         this.duration = duration;
+    }
+
+    public Attack getAttack() {
+        return attack;
     }
 }

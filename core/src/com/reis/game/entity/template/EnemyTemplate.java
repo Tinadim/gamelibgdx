@@ -3,7 +3,7 @@ package com.reis.game.entity.template;
 import com.badlogic.gdx.graphics.Color;
 import com.reis.game.entity.GameEntity;
 import com.reis.game.entity.ai.implementation.EnemyAi;
-import com.reis.game.entity.components.AiComponent;
+import com.reis.game.entity.components.EntityControllerComponent;
 import com.reis.game.entity.components.BodyComponent;
 import com.reis.game.entity.components.CombatComponent;
 import com.reis.game.entity.components.MovementComponent;
@@ -25,6 +25,6 @@ public class EnemyTemplate extends EntityTemplate {
         entity.add(new BodyComponent(entity));
         entity.add(new CombatComponent(entity));
         entity.add(new MovementComponent(entity));
-        entity.add(new AiComponent(entity, new EnemyAi(entity, aiData)));
+        entity.add(new EntityControllerComponent(entity, new EnemyAi(entity, aiData)));
     }
 }

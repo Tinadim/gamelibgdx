@@ -311,7 +311,7 @@ public final class AI {
                 com.reis.game.resource.prototype.AI.AIData.class, com.reis.game.resource.prototype.AI.AIData.Builder.class);
       }
 
-      // Construct using com.reis.game.resource.prototype.AI.AIData.newBuilder()
+      // Construct using com.reis.game.resource.prototype.EntityController.AIData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1023,7 +1023,7 @@ public final class AI {
                 com.reis.game.resource.prototype.AI.Waypoint.class, com.reis.game.resource.prototype.AI.Waypoint.Builder.class);
       }
 
-      // Construct using com.reis.game.resource.prototype.AI.Waypoint.newBuilder()
+      // Construct using com.reis.game.resource.prototype.EntityController.Waypoint.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }

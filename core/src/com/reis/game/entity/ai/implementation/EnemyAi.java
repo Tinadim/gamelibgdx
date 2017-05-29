@@ -25,9 +25,9 @@ public class EnemyAi extends StateMachineAI {
     @Override
     protected State createStates(StateMachineAI ai, AIData aiData) {
 
-        IdleState idleState = new IdleState(ai);
-        WanderingState wanderingState = new WanderingState(ai, ProtoUtils.extractWayPoints(aiData));
-        ChasingState chasingState = new ChasingState(ai, Player.getInstance());
+        IdleState idleState = new IdleState();
+        WanderingState wanderingState = new WanderingState(ProtoUtils.extractWayPoints(aiData));
+        ChasingState chasingState = new ChasingState(Player.getInstance());
 
         StateTransition idleToIdle = new StateTransition(idleState, 0);
         StateTransition idleToWandering = new StateTransition(wanderingState, 1);
@@ -36,14 +36,14 @@ public class EnemyAi extends StateMachineAI {
         StateTransition wanderingToChase = new StateTransition(chasingState, 1);
         StateTransition chaseToIdle = new StateTransition(idleState);
 
-        idleToIdle.addCondition(new ActionCompleteCondition(idleState));
-        idleToWandering.addCondition(new ActionCompleteCondition(idleState));
+        idleToIdle.addCondition(new ActionCompleteCondition());
+        idleToWandering.addCondition(new ActionCompleteCondition());
         idleToWandering.addCondition(IdleState.createShouldIdleCondition());
         idleToWandering.addCondition(WanderingState.shouldMoveCondition(entity));
-        idleToChase.addCondition(chasingState.entityNear());
-        wanderingToIdle.addCondition(new ActionCompleteCondition(wanderingState));
-        wanderingToChase.addCondition(chasingState.entityNear());
-        chaseToIdle.addCondition(chasingState.entityOutOfSight());
+        idleToChase.addCondition(chasingState.entityNear(entity));
+        wanderingToIdle.addCondition(new ActionCompleteCondition());
+        wanderingToChase.addCondition(chasingState.entityNear(entity));
+        chaseToIdle.addCondition(chasingState.entityOutOfSight(entity));
 
         idleState.addTransition(idleToIdle);
         idleState.addTransition(idleToWandering);
