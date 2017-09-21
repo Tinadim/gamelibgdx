@@ -8,22 +8,24 @@ import com.reis.game.util.CandidateResource;
  * Created by bernardoreis on 11/19/16.
  */
 
-public class Dialog implements CandidateResource {
+public class CandidateDialog implements CandidateResource {
 
     public int resourceId;
     public Integer requiredQuestId;
     public Integer requiredStep;
+    public String content;
 
 
-    public Dialog(int dialogId, Integer requiredQuestId, Integer requiredStep) {
+    public CandidateDialog(int dialogId, Integer requiredQuestId, Integer requiredStep, String content) {
         this.resourceId = dialogId;
         this.requiredQuestId = requiredQuestId;
         this.requiredStep = requiredStep;
+        this.content = content;
     }
 
     @Override
     public CandidateResource compareTo(CandidateResource otherResource) {
-        Dialog otherDialog = (Dialog) otherResource;
+        CandidateDialog otherDialog = (CandidateDialog) otherResource;
         if(this.requiredQuestId == null)
             return otherDialog;
         if(otherDialog.requiredQuestId == null)
@@ -46,6 +48,6 @@ public class Dialog implements CandidateResource {
     }
 
     public String getContent() {
-        return "";
+        return content;
     }
 }

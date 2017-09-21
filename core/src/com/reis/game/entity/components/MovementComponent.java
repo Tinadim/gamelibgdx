@@ -12,6 +12,7 @@ import com.reis.game.mechanics.collision.CollisionResults;
 public class MovementComponent extends EntityComponent {
 
     private Vector2 destination;
+    private Vector2 velocity = Vector2.Zero;
 
     private float speed = ActionConstants.DEFAULT_SPEED;
     private boolean canMove = true;
@@ -51,6 +52,22 @@ public class MovementComponent extends EntityComponent {
 
     public void moveTo(Vector2 destination) {
         this.moveTo(destination, this.speed);
+    }
+
+    public void setVelocityX(float x) {
+        this.velocity.x = x;
+    }
+
+    public void setVelocityY(float y) {
+        this.velocity.y = y;
+    }
+
+    public void setVelocity(float x, float y) {
+        this.velocity.set(x, y);
+    }
+
+    public Vector2 getVelocity() {
+        return this.velocity;
     }
 
     public void moveTo(Vector2 destination, float speed) {

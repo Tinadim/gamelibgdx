@@ -19,21 +19,21 @@ public final class ScreenProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string backgroundMusicName = 1;</code>
+     * <code>string backgroundMusicName = 1;</code>
      */
     java.lang.String getBackgroundMusicName();
     /**
-     * <code>optional string backgroundMusicName = 1;</code>
+     * <code>string backgroundMusicName = 1;</code>
      */
     com.google.protobuf.ByteString
         getBackgroundMusicNameBytes();
 
     /**
-     * <code>optional string tileMapName = 2;</code>
+     * <code>string tileMapName = 2;</code>
      */
     java.lang.String getTileMapName();
     /**
-     * <code>optional string tileMapName = 2;</code>
+     * <code>string tileMapName = 2;</code>
      */
     com.google.protobuf.ByteString
         getTileMapNameBytes();
@@ -69,6 +69,7 @@ public final class ScreenProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ScreenData)
       ScreenDataOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ScreenData.newBuilder() to construct.
     private ScreenData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -82,7 +83,7 @@ public final class ScreenProto {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ScreenData(
         com.google.protobuf.CodedInputStream input,
@@ -90,6 +91,8 @@ public final class ScreenProto {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -99,7 +102,8 @@ public final class ScreenProto {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -136,6 +140,7 @@ public final class ScreenProto {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           entityData_ = java.util.Collections.unmodifiableList(entityData_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -155,7 +160,7 @@ public final class ScreenProto {
     public static final int BACKGROUNDMUSICNAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object backgroundMusicName_;
     /**
-     * <code>optional string backgroundMusicName = 1;</code>
+     * <code>string backgroundMusicName = 1;</code>
      */
     public java.lang.String getBackgroundMusicName() {
       java.lang.Object ref = backgroundMusicName_;
@@ -170,7 +175,7 @@ public final class ScreenProto {
       }
     }
     /**
-     * <code>optional string backgroundMusicName = 1;</code>
+     * <code>string backgroundMusicName = 1;</code>
      */
     public com.google.protobuf.ByteString
         getBackgroundMusicNameBytes() {
@@ -189,7 +194,7 @@ public final class ScreenProto {
     public static final int TILEMAPNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object tileMapName_;
     /**
-     * <code>optional string tileMapName = 2;</code>
+     * <code>string tileMapName = 2;</code>
      */
     public java.lang.String getTileMapName() {
       java.lang.Object ref = tileMapName_;
@@ -204,7 +209,7 @@ public final class ScreenProto {
       }
     }
     /**
-     * <code>optional string tileMapName = 2;</code>
+     * <code>string tileMapName = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTileMapNameBytes() {
@@ -276,6 +281,7 @@ public final class ScreenProto {
       for (int i = 0; i < entityData_.size(); i++) {
         output.writeMessage(3, entityData_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -293,11 +299,11 @@ public final class ScreenProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, entityData_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -315,6 +321,7 @@ public final class ScreenProto {
           .equals(other.getTileMapName());
       result = result && getEntityDataList()
           .equals(other.getEntityDataList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -324,7 +331,7 @@ public final class ScreenProto {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + BACKGROUNDMUSICNAME_FIELD_NUMBER;
       hash = (53 * hash) + getBackgroundMusicName().hashCode();
       hash = (37 * hash) + TILEMAPNAME_FIELD_NUMBER;
@@ -338,6 +345,17 @@ public final class ScreenProto {
       return hash;
     }
 
+    public static com.reis.game.resource.prototype.ScreenProto.ScreenData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.reis.game.resource.prototype.ScreenProto.ScreenData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.reis.game.resource.prototype.ScreenProto.ScreenData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -507,7 +525,7 @@ public final class ScreenProto {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -520,12 +538,12 @@ public final class ScreenProto {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -573,6 +591,7 @@ public final class ScreenProto {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -602,7 +621,7 @@ public final class ScreenProto {
 
       private java.lang.Object backgroundMusicName_ = "";
       /**
-       * <code>optional string backgroundMusicName = 1;</code>
+       * <code>string backgroundMusicName = 1;</code>
        */
       public java.lang.String getBackgroundMusicName() {
         java.lang.Object ref = backgroundMusicName_;
@@ -617,7 +636,7 @@ public final class ScreenProto {
         }
       }
       /**
-       * <code>optional string backgroundMusicName = 1;</code>
+       * <code>string backgroundMusicName = 1;</code>
        */
       public com.google.protobuf.ByteString
           getBackgroundMusicNameBytes() {
@@ -633,7 +652,7 @@ public final class ScreenProto {
         }
       }
       /**
-       * <code>optional string backgroundMusicName = 1;</code>
+       * <code>string backgroundMusicName = 1;</code>
        */
       public Builder setBackgroundMusicName(
           java.lang.String value) {
@@ -646,7 +665,7 @@ public final class ScreenProto {
         return this;
       }
       /**
-       * <code>optional string backgroundMusicName = 1;</code>
+       * <code>string backgroundMusicName = 1;</code>
        */
       public Builder clearBackgroundMusicName() {
         
@@ -655,7 +674,7 @@ public final class ScreenProto {
         return this;
       }
       /**
-       * <code>optional string backgroundMusicName = 1;</code>
+       * <code>string backgroundMusicName = 1;</code>
        */
       public Builder setBackgroundMusicNameBytes(
           com.google.protobuf.ByteString value) {
@@ -671,7 +690,7 @@ public final class ScreenProto {
 
       private java.lang.Object tileMapName_ = "";
       /**
-       * <code>optional string tileMapName = 2;</code>
+       * <code>string tileMapName = 2;</code>
        */
       public java.lang.String getTileMapName() {
         java.lang.Object ref = tileMapName_;
@@ -686,7 +705,7 @@ public final class ScreenProto {
         }
       }
       /**
-       * <code>optional string tileMapName = 2;</code>
+       * <code>string tileMapName = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTileMapNameBytes() {
@@ -702,7 +721,7 @@ public final class ScreenProto {
         }
       }
       /**
-       * <code>optional string tileMapName = 2;</code>
+       * <code>string tileMapName = 2;</code>
        */
       public Builder setTileMapName(
           java.lang.String value) {
@@ -715,7 +734,7 @@ public final class ScreenProto {
         return this;
       }
       /**
-       * <code>optional string tileMapName = 2;</code>
+       * <code>string tileMapName = 2;</code>
        */
       public Builder clearTileMapName() {
         
@@ -724,7 +743,7 @@ public final class ScreenProto {
         return this;
       }
       /**
-       * <code>optional string tileMapName = 2;</code>
+       * <code>string tileMapName = 2;</code>
        */
       public Builder setTileMapNameBytes(
           com.google.protobuf.ByteString value) {
@@ -979,12 +998,12 @@ public final class ScreenProto {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -1071,6 +1090,7 @@ public final class ScreenProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ScreenNameMapData)
       ScreenNameMapDataOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ScreenNameMapData.newBuilder() to construct.
     private ScreenNameMapData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -1081,7 +1101,7 @@ public final class ScreenProto {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ScreenNameMapData(
         com.google.protobuf.CodedInputStream input,
@@ -1089,6 +1109,8 @@ public final class ScreenProto {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1098,7 +1120,8 @@ public final class ScreenProto {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1124,6 +1147,7 @@ public final class ScreenProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1244,6 +1268,7 @@ public final class ScreenProto {
           internalGetScreenIdToNameMap(),
           ScreenIdToNameMapDefaultEntryHolder.defaultEntry,
           1);
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1261,11 +1286,11 @@ public final class ScreenProto {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, screenIdToNameMap__);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1279,6 +1304,7 @@ public final class ScreenProto {
       boolean result = true;
       result = result && internalGetScreenIdToNameMap().equals(
           other.internalGetScreenIdToNameMap());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -1288,7 +1314,7 @@ public final class ScreenProto {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (!internalGetScreenIdToNameMap().getMap().isEmpty()) {
         hash = (37 * hash) + SCREENIDTONAMEMAP_FIELD_NUMBER;
         hash = (53 * hash) + internalGetScreenIdToNameMap().hashCode();
@@ -1298,6 +1324,17 @@ public final class ScreenProto {
       return hash;
     }
 
+    public static com.reis.game.resource.prototype.ScreenProto.ScreenNameMapData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.reis.game.resource.prototype.ScreenProto.ScreenNameMapData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.reis.game.resource.prototype.ScreenProto.ScreenNameMapData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1468,7 +1505,7 @@ public final class ScreenProto {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -1481,12 +1518,12 @@ public final class ScreenProto {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1502,6 +1539,7 @@ public final class ScreenProto {
         if (other == com.reis.game.resource.prototype.ScreenProto.ScreenNameMapData.getDefaultInstance()) return this;
         internalGetMutableScreenIdToNameMap().mergeFrom(
             other.internalGetScreenIdToNameMap());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1606,7 +1644,8 @@ public final class ScreenProto {
       }
 
       public Builder clearScreenIdToNameMap() {
-        getMutableScreenIdToNameMap().clear();
+        internalGetMutableScreenIdToNameMap().getMutableMap()
+            .clear();
         return this;
       }
       /**
@@ -1616,7 +1655,8 @@ public final class ScreenProto {
       public Builder removeScreenIdToNameMap(
           int key) {
         
-        getMutableScreenIdToNameMap().remove(key);
+        internalGetMutableScreenIdToNameMap().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
@@ -1635,7 +1675,8 @@ public final class ScreenProto {
           java.lang.String value) {
         
         if (value == null) { throw new java.lang.NullPointerException(); }
-        getMutableScreenIdToNameMap().put(key, value);
+        internalGetMutableScreenIdToNameMap().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
@@ -1644,17 +1685,18 @@ public final class ScreenProto {
 
       public Builder putAllScreenIdToNameMap(
           java.util.Map<java.lang.Integer, java.lang.String> values) {
-        getMutableScreenIdToNameMap().putAll(values);
+        internalGetMutableScreenIdToNameMap().getMutableMap()
+            .putAll(values);
         return this;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 

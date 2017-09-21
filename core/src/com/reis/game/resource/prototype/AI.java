@@ -49,6 +49,7 @@ public final class AI {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:AIData)
       AIDataOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use AIData.newBuilder() to construct.
     private AIData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -60,7 +61,7 @@ public final class AI {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private AIData(
         com.google.protobuf.CodedInputStream input,
@@ -68,6 +69,8 @@ public final class AI {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -77,7 +80,8 @@ public final class AI {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -102,6 +106,7 @@ public final class AI {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           waypoint_ = java.util.Collections.unmodifiableList(waypoint_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -167,6 +172,7 @@ public final class AI {
       for (int i = 0; i < waypoint_.size(); i++) {
         output.writeMessage(1, waypoint_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -178,11 +184,11 @@ public final class AI {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, waypoint_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -196,6 +202,7 @@ public final class AI {
       boolean result = true;
       result = result && getWaypointList()
           .equals(other.getWaypointList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -205,7 +212,7 @@ public final class AI {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getWaypointCount() > 0) {
         hash = (37 * hash) + WAYPOINT_FIELD_NUMBER;
         hash = (53 * hash) + getWaypointList().hashCode();
@@ -215,6 +222,17 @@ public final class AI {
       return hash;
     }
 
+    public static com.reis.game.resource.prototype.AI.AIData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.reis.game.resource.prototype.AI.AIData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.reis.game.resource.prototype.AI.AIData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -311,7 +329,7 @@ public final class AI {
                 com.reis.game.resource.prototype.AI.AIData.class, com.reis.game.resource.prototype.AI.AIData.Builder.class);
       }
 
-      // Construct using com.reis.game.resource.prototype.EntityController.AIData.newBuilder()
+      // Construct using com.reis.game.resource.prototype.AI.AIData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -376,7 +394,7 @@ public final class AI {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -389,12 +407,12 @@ public final class AI {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -434,6 +452,7 @@ public final class AI {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -702,12 +721,12 @@ public final class AI {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -754,12 +773,12 @@ public final class AI {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 x = 1;</code>
+     * <code>int32 x = 1;</code>
      */
     int getX();
 
     /**
-     * <code>optional int32 y = 2;</code>
+     * <code>int32 y = 2;</code>
      */
     int getY();
   }
@@ -770,6 +789,7 @@ public final class AI {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:Waypoint)
       WaypointOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Waypoint.newBuilder() to construct.
     private Waypoint(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -782,7 +802,7 @@ public final class AI {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Waypoint(
         com.google.protobuf.CodedInputStream input,
@@ -790,6 +810,8 @@ public final class AI {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -799,7 +821,8 @@ public final class AI {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -822,6 +845,7 @@ public final class AI {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -840,7 +864,7 @@ public final class AI {
     public static final int X_FIELD_NUMBER = 1;
     private int x_;
     /**
-     * <code>optional int32 x = 1;</code>
+     * <code>int32 x = 1;</code>
      */
     public int getX() {
       return x_;
@@ -849,7 +873,7 @@ public final class AI {
     public static final int Y_FIELD_NUMBER = 2;
     private int y_;
     /**
-     * <code>optional int32 y = 2;</code>
+     * <code>int32 y = 2;</code>
      */
     public int getY() {
       return y_;
@@ -873,6 +897,7 @@ public final class AI {
       if (y_ != 0) {
         output.writeInt32(2, y_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -888,11 +913,11 @@ public final class AI {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, y_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -908,6 +933,7 @@ public final class AI {
           == other.getX());
       result = result && (getY()
           == other.getY());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -917,7 +943,7 @@ public final class AI {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + X_FIELD_NUMBER;
       hash = (53 * hash) + getX();
       hash = (37 * hash) + Y_FIELD_NUMBER;
@@ -927,6 +953,17 @@ public final class AI {
       return hash;
     }
 
+    public static com.reis.game.resource.prototype.AI.Waypoint parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.reis.game.resource.prototype.AI.Waypoint parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.reis.game.resource.prototype.AI.Waypoint parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1023,7 +1060,7 @@ public final class AI {
                 com.reis.game.resource.prototype.AI.Waypoint.class, com.reis.game.resource.prototype.AI.Waypoint.Builder.class);
       }
 
-      // Construct using com.reis.game.resource.prototype.EntityController.Waypoint.newBuilder()
+      // Construct using com.reis.game.resource.prototype.AI.Waypoint.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1077,7 +1114,7 @@ public final class AI {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -1090,12 +1127,12 @@ public final class AI {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1115,6 +1152,7 @@ public final class AI {
         if (other.getY() != 0) {
           setY(other.getY());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1143,13 +1181,13 @@ public final class AI {
 
       private int x_ ;
       /**
-       * <code>optional int32 x = 1;</code>
+       * <code>int32 x = 1;</code>
        */
       public int getX() {
         return x_;
       }
       /**
-       * <code>optional int32 x = 1;</code>
+       * <code>int32 x = 1;</code>
        */
       public Builder setX(int value) {
         
@@ -1158,7 +1196,7 @@ public final class AI {
         return this;
       }
       /**
-       * <code>optional int32 x = 1;</code>
+       * <code>int32 x = 1;</code>
        */
       public Builder clearX() {
         
@@ -1169,13 +1207,13 @@ public final class AI {
 
       private int y_ ;
       /**
-       * <code>optional int32 y = 2;</code>
+       * <code>int32 y = 2;</code>
        */
       public int getY() {
         return y_;
       }
       /**
-       * <code>optional int32 y = 2;</code>
+       * <code>int32 y = 2;</code>
        */
       public Builder setY(int value) {
         
@@ -1184,7 +1222,7 @@ public final class AI {
         return this;
       }
       /**
-       * <code>optional int32 y = 2;</code>
+       * <code>int32 y = 2;</code>
        */
       public Builder clearY() {
         
@@ -1194,12 +1232,12 @@ public final class AI {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 

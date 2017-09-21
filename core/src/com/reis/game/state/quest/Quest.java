@@ -17,6 +17,7 @@ public class Quest {
 
     private int id;
     private int currentStepIndex;
+    private boolean complete = false;
 
     public List<QuestStep> steps;
 
@@ -43,23 +44,30 @@ public class Quest {
     }
 
     public void updateCurrentStep(Event event) {
+        if (currentStepIndex >= this.steps.size()) {
+            return;
+        }
         QuestStep currentStep = this.steps.get(currentStepIndex);
         currentStep.updateRequirements(event);
-        if(currentStep.isComplete()) {
+        if (currentStep.isComplete()) {
             this.currentStepIndex++;
             this.onStepComplete(currentStep);
         }
     }
 
     public void onStepComplete(QuestStep step) {
-        if(currentStepIndex == steps.size()) {
-            QuestManager.questFinished(this);
+        step.onComplete();
+        if (currentStepIndex >= steps.size()) {
             this.onQuestComplete();
         }
-        step.onComplete();
     }
 
-    public void onQuestComplete(){
+    public void onQuestComplete() {
+        this.complete = false;
         new Event(EventType.QUEST_COMPLETE, this).fire();
+    }
+
+    public boolean isComplete() {
+        return complete;
     }
 }

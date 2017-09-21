@@ -106,7 +106,7 @@ public class CollisionDetector {
         if (component.shouldIgnore(entityToTest))
             return false;
 
-        Rectangle2D intersection = component.checkIntersectionWithEntity(entityToTest, offset);
+        Rectangle2D intersection = testCollision(entity, entityToTest, offset);
         if (intersection == null || intersection.isEmpty())
             return false;
 
@@ -114,5 +114,33 @@ public class CollisionDetector {
         results.collided = true;
         BodyComponent entityBody = entityToTest.getComponent(BodyComponent.class);
         return entityBody != null && entityBody.isCollidable();
+    }
+
+    public static Rectangle2D testCollision(GameEntity entity1, GameEntity entity2) {
+        return testCollision(entity1, entity2, Vector2.Zero);
+    }
+
+    public static Rectangle2D testCollision(GameEntity entity1, GameEntity entity2, Vector2 offset) {
+        BodyComponent body1 = entity1.getComponent(BodyComponent.class);
+        BodyComponent body2 = entity2.getComponent(BodyComponent.class);
+        if (body1 != null && body2 != null && body1.isCollidable && body2.isCollidable) {
+            return calculateIntersectionBetweenEntities(entity1, entity2, offset);
+        } else {
+            return null;
+        }
+    }
+
+    private static Rectangle2D calculateIntersectionBetweenEntities(GameEntity entity1, GameEntity entity2, Vector2 offset) {
+        Rectangle2D r1 = new Rectangle2D.Float(entity1.getX() + offset.x, entity1.getY() + offset.y, entity1.getWidth(), entity1.getHeight());
+        Rectangle2D r2 = new Rectangle2D.Float(entity2.getX(), entity2.getY(), entity2.getWidth(), entity2.getHeight());
+        return r1.createIntersection(r2);
+    }
+
+    public static boolean isTouching(GameEntity entity1, GameEntity entity2) {
+        double distanceX = Math.abs(entity2.getCenterX() - entity1.getCenterX());
+        double distanceY = Math.abs(entity2.getCenterY() - entity1.getCenterY());
+        boolean isTouchingX = distanceX <= (entity1.getWidth() * 0.5 + entity2.getWidth() * 0.5);
+        boolean isTouchingY = distanceY <= (entity1.getHeight() * 0.5 + entity2.getHeight() * 0.5);
+        return isTouchingX && isTouchingY;
     }
 }

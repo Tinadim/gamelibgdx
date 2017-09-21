@@ -27,6 +27,7 @@ public class PlayerController extends EntityController {
         }
     }
 
+    @Override
     public AiAction getCurrentAction() {
         return currentAction;
     }

@@ -3,10 +3,9 @@ package com.reis.game.entity.components;
 import com.badlogic.gdx.math.Vector2;
 import com.reis.game.entity.GameEntity;
 import com.reis.game.mechanics.TileEntityMap;
-import com.reis.game.mechanics.collision.Collision;
 import com.reis.game.mechanics.collision.CollisionDetector;
-import com.reis.game.mechanics.collision.CollisionHandler;
 import com.reis.game.mechanics.collision.CollisionListener;
+import com.reis.game.mechanics.collision.CollisionManager;
 import com.reis.game.mechanics.collision.CollisionResults;
 import com.reis.game.scene.SceneManager;
 import com.reis.game.util.MapUtils;
@@ -135,25 +134,6 @@ public class BodyComponent extends EntityComponent {
         return results;
     }
 
-    public Rectangle2D checkIntersectionWithEntity(GameEntity entity) {
-        return checkIntersectionWithEntity(entity, Vector2.Zero);
-    }
-
-    public Rectangle2D checkIntersectionWithEntity(GameEntity entity, Vector2 offset) {
-        BodyComponent body = entity.getComponent(BodyComponent.class);
-        if (body != null && body.isCollidable) {
-            return calculateIntersectionWithEntity(entity, offset);
-        } else {
-            return null;
-        }
-    }
-
-    private Rectangle2D calculateIntersectionWithEntity(GameEntity entity, Vector2 offset) {
-        Rectangle2D r1 = new Rectangle2D.Float(this.entity.getX() + offset.x, this.entity.getY() + offset.y, this.entity.getWidth(), this.entity.getHeight());
-        Rectangle2D r2 = new Rectangle2D.Float(entity.getX(), entity.getY(), entity.getWidth(), entity.getHeight());
-        return r1.createIntersection(r2);
-    }
-
     public void setIgnoreSameType(boolean ignore) {
         if (ignore) {
             addEntityToIgnore(this.entity.getClass());
@@ -164,31 +144,7 @@ public class BodyComponent extends EntityComponent {
 
     private void resolveCollisions(CollisionResults results) {
         if (results.collisions != null && results.collisions.size() > 0) {
-            for (Collision collision : results.collisions) {
-                CollisionHandler.handleCollision(collision.entity, collision.collidedWith);
-                notifyListeners(collision);
-            }
-        }
-    }
-
-    public void addCollisionListener(CollisionListener listener) {
-        if (this.listeners == null) {
-            this.listeners = new ArrayList<CollisionListener>();
-        }
-        this.listeners.add(listener);
-    }
-
-    public void removeCollisionListener(CollisionListener listener) {
-        if (this.listeners != null) {
-            this.listeners.remove(listener);
-        }
-    }
-
-    private void notifyListeners(Collision collision) {
-        if (this.listeners != null && this.listeners.size() > 0) {
-            for (CollisionListener listener : listeners) {
-                listener.onCollided(collision);
-            }
+            CollisionManager.registerCollisions(results.collisions);
         }
     }
 

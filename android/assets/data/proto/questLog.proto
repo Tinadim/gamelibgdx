@@ -6,15 +6,10 @@ import "requirement.proto";
 import "reaction.proto";
 
 message QuestLogData {
-  repeated QuestData questData = 1;
-}
-
-message QuestData {
-  int32 questId = 1;
-  repeated QuestStepData = 2;
+  map<int32, QuestStepData> questLog = 1;
 }
 
 message QuestStepData {
-  repeated RequirementData = 1;
-  repeated ReactionData = 2;
+  repeated RequirementData requirements = 1;
+  repeated ReactionData reactions = 2;
 }

@@ -13,6 +13,8 @@ import static com.reis.game.contants.GameConstants.TILE_SIZE;
 
 public class Bow extends Weapon {
 
+    // TODO finish implementing Bow and arrows
+
     @Override
     public Attack createAttack(GameEntity attacker) {
         Attack attack = new Attack();

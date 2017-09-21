@@ -16,6 +16,9 @@ public class Attack {
     public float duration = -1;
 
     public void fire() {
+        if (hitbox == null) {
+            throw new IllegalStateException("The attack hitbox must be instantiated before firing");
+        }
         MapUtils.getForegroundLayer().addActor(hitbox);
     }
 

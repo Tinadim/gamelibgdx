@@ -2,6 +2,7 @@ package com.reis.game.application.state;
 
 import com.reis.game.application.GameManager;
 import com.reis.game.entity.player.Player;
+import com.reis.game.mechanics.collision.CollisionManager;
 import com.reis.game.scene.GameScene;
 import com.reis.game.scene.SceneManager;
 import com.reis.game.scene.dialog.DialogManager;
@@ -31,6 +32,7 @@ public class PlayState extends ApplicationState {
     @Override
     public void update() {
         GameManager.updateWorld();
+        CollisionManager.update();
         scene.update();
     }
 

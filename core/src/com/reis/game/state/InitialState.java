@@ -43,8 +43,9 @@ public class InitialState extends GameState {
                     .newBuilder()
                     .setBackgroundMusicName("intro.mp3")
                     .setTileMapName("desert.tmx")
-                    //.addEntityData(buildMockNpc())
-                    .addEntityData(buildMockEnemy())
+                    .addEntityData(buildMockNpc(2, 5, 5))
+                    .addEntityData(buildMockNpc(3, 10, 10))
+                    //.addEntityData(buildMockEnemy())
                     .build();
 
             data.writeTo(stream);
@@ -53,22 +54,22 @@ public class InitialState extends GameState {
         }
     }
 
-    private EntityData buildMockNpc() {
+    private EntityData buildMockNpc(int id, int row, int column) {
 
         AIData aiData = AIData
                 .newBuilder()
-                .addWaypoint(Waypoint.newBuilder().setX(2).setY(5).build())
-                .addWaypoint(Waypoint.newBuilder().setX(5).setY(5).build())
-                .addWaypoint(Waypoint.newBuilder().setX(8).setY(5).build())
-                .addWaypoint(Waypoint.newBuilder().setX(5).setY(5).build())
+                .addWaypoint(Waypoint.newBuilder().setX(column - 3).setY(row).build())
+                .addWaypoint(Waypoint.newBuilder().setX(column).setY(row).build())
+                .addWaypoint(Waypoint.newBuilder().setX(column + 3).setY(row).build())
+                .addWaypoint(Waypoint.newBuilder().setX(column).setY(row).build())
                 .build();
 
         return EntityData
                 .newBuilder()
                 .setTemplateName("NpcTemplate")
-                .setRow(5)
-                .setCol(5)
-                .setId(2)
+                .setRow(row)
+                .setCol(column)
+                .setId(id)
                 .setAiData(aiData)
                 .build();
     }
@@ -86,8 +87,8 @@ public class InitialState extends GameState {
         return EntityData
                 .newBuilder()
                 .setTemplateName("EnemyTemplate")
-                .setRow(10)
-                .setCol(10)
+                .setRow(15)
+                .setCol(15)
                 .setId(3)
                 .setAiData(aiData)
                 .build();

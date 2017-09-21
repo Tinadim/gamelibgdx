@@ -64,4 +64,10 @@ public abstract class StateMachineAI extends EntityController {
     public State getCurrentState() {
         return currentState;
     }
+
+    @Override
+    public AiAction getCurrentAction() {
+        State state = getCurrentState();
+        return state == null ? null : state.getAction();
+    }
 }

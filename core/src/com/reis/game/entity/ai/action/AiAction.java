@@ -46,15 +46,17 @@ public class AiAction {
     }
 
     public final void update(EntityController entityController, float delta) {
-        if (paused)
+        if (paused) {
             return;
+        }
         boolean finished = checkFinished(entityController);
-        if (!finished)
+        if (!finished) {
             onUpdate(entityController, delta);
+        }
     }
 
     public boolean checkFinished(EntityController entityController) {
-        return false;
+        return finished;
     }
 
     public boolean isSelfReplaceable() {
@@ -72,6 +74,8 @@ public class AiAction {
     protected void onUpdate(EntityController entityController, float delta) {}
 
     public void onComplete(EntityController entityController) {}
+
+    // TODO still not sure if this is the right way to go
 
     public State createStateFromAction(StateMachineAI ai) {
         State state = new State(this);

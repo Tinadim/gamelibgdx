@@ -4,6 +4,7 @@ import com.reis.game.state.quest.Quest;
 import com.reis.game.state.quest.QuestManager;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -20,10 +21,17 @@ public final class EventHandler {
     }
 
     private static void updateOngoingQuests(Collection<Quest> quests, Event event) {
-        for(Quest quest : quests) {
-            if(event.trigger == quest)
+        Iterator<Quest> questIterator = quests.iterator();
+        while (questIterator.hasNext()) {
+            Quest quest = questIterator.next();
+            if (event.trigger == quest) {
                 continue;
+            }
+
             quest.updateCurrentStep(event);
+            if (quest.isComplete()) {
+                questIterator.remove();
+            }
         }
     }
 

@@ -13,12 +13,14 @@ public interface ActionConstants {
     public final static int MOVE_PRIORITY = 5;
     public final static int ATTACK_PRIORITY = 8;
     public final static int KNOCKBACK_PRIORITY = 9;
+    public final static int INTRACTION_PRIORITY = 9;
     public final static int DIE_PRIORITY = PRIORITY_MAX;
 
     public final static String IDLE_NAME = "idle";
     public final static String MOVE_NAME = "move";
     public final static String ATTACK_NAME = "attack";
     public final static String KNOCKBACK_NAME = "knockback";
+    public final static String INTERACTION_NAME = "interaction";
 
     public static final float DEFAULT_SPEED = 200f;
     public static final float DEFAULT_RUN_SPEED = 2 * DEFAULT_SPEED;

@@ -46,9 +46,10 @@ public class GameScene extends Scene implements SceneConstants {
 
     @Override
     public void update() {
-        checkInputs();
         super.update();
         sortMapEntities();
+        // TODO remove this. Player should walk based on it's velocity
+        Player.getInstance().move();
     }
 
     private void bindOccupiedTiles() {
@@ -67,6 +68,15 @@ public class GameScene extends Scene implements SceneConstants {
         children.sort(new EntityComparator());
     }
 
+    public GameEntity findEntityById(int id) {
+        TiledMapTileLayer layer = MapUtils.getForegroundLayer(map);
+        Actor actor = layer.findActor(String.valueOf(id));
+        if (actor instanceof GameEntity) {
+            return (GameEntity) actor;
+        }
+        return null;
+    }
+
     public TiledMap getMap() {
         return map;
     }
@@ -80,19 +90,21 @@ public class GameScene extends Scene implements SceneConstants {
         this.cameraHandler = handler;
     }
 
+    // TODO implement a better input handler
+
     private void checkInputs() {
-        Player player = Player.getInstance();
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            player.attack();
-            return;
-        }
-        int directionX = Gdx.input.isKeyPressed(Keys.RIGHT) ? 1 :
-                Gdx.input.isKeyPressed(Keys.LEFT) ? -1 : 0;
-        int directionY = Gdx.input.isKeyPressed(Keys.UP) ? 1 :
-                Gdx.input.isKeyPressed(Keys.DOWN) ? -1 : 0;
-        Vector2 movement = new Vector2(directionX, directionY);
-        if (!movement.equals(Vector2.Zero))
-            player.move(movement.scl(GameConstants.TILE_SIZE));
+//        Player player = Player.getInstance();
+//        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+//            player.executeAction();
+//            return;
+//        }
+//        int directionX = Gdx.input.isKeyPressed(Keys.RIGHT) ? 1 :
+//                Gdx.input.isKeyPressed(Keys.LEFT) ? -1 : 0;
+//        int directionY = Gdx.input.isKeyPressed(Keys.UP) ? 1 :
+//                Gdx.input.isKeyPressed(Keys.DOWN) ? -1 : 0;
+//        Vector2 movement = new Vector2(directionX, directionY);
+//        if (!movement.equals(Vector2.Zero))
+//            player.move(movement.scl(GameConstants.TILE_SIZE));
         //else
             //player.idle();
         //Vector2 movement = new Vector2(directionX, directionY);

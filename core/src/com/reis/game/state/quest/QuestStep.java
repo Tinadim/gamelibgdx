@@ -17,6 +17,11 @@ public class QuestStep {
     private List<Requirement> requirements;
     private List<Reaction> reactions;
     private boolean complete;
+    private int id;
+
+    public QuestStep(int id) {
+        this.id = id;
+    }
 
     public void addRequirement(Requirement requirement) {
         if(requirements == null)
@@ -32,9 +37,11 @@ public class QuestStep {
 
     public void updateRequirements(Event event) {
         this.complete = true;
-        for(Requirement requirement : requirements) {
-            if(!requirement.checkEventType(event))
+        for (Requirement requirement : requirements) {
+            if(!requirement.checkEventType(event)) {
+                this.complete = false;
                 break;
+            }
             requirement.update(event);
             complete = complete && requirement.check();
         }

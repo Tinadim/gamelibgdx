@@ -36,4 +36,6 @@ public abstract class EntityController {
     }
 
     public abstract boolean forceAction(AiAction action);
+
+    public abstract AiAction getCurrentAction();
 }

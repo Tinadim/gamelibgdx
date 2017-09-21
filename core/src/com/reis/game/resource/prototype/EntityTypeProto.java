@@ -19,26 +19,26 @@ public final class EntityTypeProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     int getId();
 
     /**
-     * <code>optional int32 row = 2;</code>
+     * <code>int32 row = 2;</code>
      */
     int getRow();
 
     /**
-     * <code>optional int32 col = 3;</code>
+     * <code>int32 col = 3;</code>
      */
     int getCol();
 
     /**
-     * <code>optional string templateName = 4;</code>
+     * <code>string templateName = 4;</code>
      */
     java.lang.String getTemplateName();
     /**
-     * <code>optional string templateName = 4;</code>
+     * <code>string templateName = 4;</code>
      */
     com.google.protobuf.ByteString
         getTemplateNameBytes();
@@ -48,7 +48,7 @@ public final class EntityTypeProto {
      *int32 entityTypeId = 4;
      * </pre>
      *
-     * <code>optional .AIData aiData = 5;</code>
+     * <code>.AIData aiData = 5;</code>
      */
     boolean hasAiData();
     /**
@@ -56,7 +56,7 @@ public final class EntityTypeProto {
      *int32 entityTypeId = 4;
      * </pre>
      *
-     * <code>optional .AIData aiData = 5;</code>
+     * <code>.AIData aiData = 5;</code>
      */
     com.reis.game.resource.prototype.AI.AIData getAiData();
     /**
@@ -64,7 +64,7 @@ public final class EntityTypeProto {
      *int32 entityTypeId = 4;
      * </pre>
      *
-     * <code>optional .AIData aiData = 5;</code>
+     * <code>.AIData aiData = 5;</code>
      */
     com.reis.game.resource.prototype.AI.AIDataOrBuilder getAiDataOrBuilder();
   }
@@ -75,6 +75,7 @@ public final class EntityTypeProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:EntityData)
       EntityDataOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use EntityData.newBuilder() to construct.
     private EntityData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -89,7 +90,7 @@ public final class EntityTypeProto {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private EntityData(
         com.google.protobuf.CodedInputStream input,
@@ -97,6 +98,8 @@ public final class EntityTypeProto {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -106,7 +109,8 @@ public final class EntityTypeProto {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -153,6 +157,7 @@ public final class EntityTypeProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -171,7 +176,7 @@ public final class EntityTypeProto {
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     public int getId() {
       return id_;
@@ -180,7 +185,7 @@ public final class EntityTypeProto {
     public static final int ROW_FIELD_NUMBER = 2;
     private int row_;
     /**
-     * <code>optional int32 row = 2;</code>
+     * <code>int32 row = 2;</code>
      */
     public int getRow() {
       return row_;
@@ -189,7 +194,7 @@ public final class EntityTypeProto {
     public static final int COL_FIELD_NUMBER = 3;
     private int col_;
     /**
-     * <code>optional int32 col = 3;</code>
+     * <code>int32 col = 3;</code>
      */
     public int getCol() {
       return col_;
@@ -198,7 +203,7 @@ public final class EntityTypeProto {
     public static final int TEMPLATENAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object templateName_;
     /**
-     * <code>optional string templateName = 4;</code>
+     * <code>string templateName = 4;</code>
      */
     public java.lang.String getTemplateName() {
       java.lang.Object ref = templateName_;
@@ -213,7 +218,7 @@ public final class EntityTypeProto {
       }
     }
     /**
-     * <code>optional string templateName = 4;</code>
+     * <code>string templateName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTemplateNameBytes() {
@@ -236,7 +241,7 @@ public final class EntityTypeProto {
      *int32 entityTypeId = 4;
      * </pre>
      *
-     * <code>optional .AIData aiData = 5;</code>
+     * <code>.AIData aiData = 5;</code>
      */
     public boolean hasAiData() {
       return aiData_ != null;
@@ -246,7 +251,7 @@ public final class EntityTypeProto {
      *int32 entityTypeId = 4;
      * </pre>
      *
-     * <code>optional .AIData aiData = 5;</code>
+     * <code>.AIData aiData = 5;</code>
      */
     public com.reis.game.resource.prototype.AI.AIData getAiData() {
       return aiData_ == null ? com.reis.game.resource.prototype.AI.AIData.getDefaultInstance() : aiData_;
@@ -256,7 +261,7 @@ public final class EntityTypeProto {
      *int32 entityTypeId = 4;
      * </pre>
      *
-     * <code>optional .AIData aiData = 5;</code>
+     * <code>.AIData aiData = 5;</code>
      */
     public com.reis.game.resource.prototype.AI.AIDataOrBuilder getAiDataOrBuilder() {
       return getAiData();
@@ -289,6 +294,7 @@ public final class EntityTypeProto {
       if (aiData_ != null) {
         output.writeMessage(5, getAiData());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -315,11 +321,11 @@ public final class EntityTypeProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getAiData());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -344,6 +350,7 @@ public final class EntityTypeProto {
         result = result && getAiData()
             .equals(other.getAiData());
       }
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -353,7 +360,7 @@ public final class EntityTypeProto {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId();
       hash = (37 * hash) + ROW_FIELD_NUMBER;
@@ -371,6 +378,17 @@ public final class EntityTypeProto {
       return hash;
     }
 
+    public static com.reis.game.resource.prototype.EntityTypeProto.EntityData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.reis.game.resource.prototype.EntityTypeProto.EntityData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.reis.game.resource.prototype.EntityTypeProto.EntityData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -538,7 +556,7 @@ public final class EntityTypeProto {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -551,12 +569,12 @@ public final class EntityTypeProto {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -586,6 +604,7 @@ public final class EntityTypeProto {
         if (other.hasAiData()) {
           mergeAiData(other.getAiData());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -614,13 +633,13 @@ public final class EntityTypeProto {
 
       private int id_ ;
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public Builder setId(int value) {
         
@@ -629,7 +648,7 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public Builder clearId() {
         
@@ -640,13 +659,13 @@ public final class EntityTypeProto {
 
       private int row_ ;
       /**
-       * <code>optional int32 row = 2;</code>
+       * <code>int32 row = 2;</code>
        */
       public int getRow() {
         return row_;
       }
       /**
-       * <code>optional int32 row = 2;</code>
+       * <code>int32 row = 2;</code>
        */
       public Builder setRow(int value) {
         
@@ -655,7 +674,7 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <code>optional int32 row = 2;</code>
+       * <code>int32 row = 2;</code>
        */
       public Builder clearRow() {
         
@@ -666,13 +685,13 @@ public final class EntityTypeProto {
 
       private int col_ ;
       /**
-       * <code>optional int32 col = 3;</code>
+       * <code>int32 col = 3;</code>
        */
       public int getCol() {
         return col_;
       }
       /**
-       * <code>optional int32 col = 3;</code>
+       * <code>int32 col = 3;</code>
        */
       public Builder setCol(int value) {
         
@@ -681,7 +700,7 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <code>optional int32 col = 3;</code>
+       * <code>int32 col = 3;</code>
        */
       public Builder clearCol() {
         
@@ -692,7 +711,7 @@ public final class EntityTypeProto {
 
       private java.lang.Object templateName_ = "";
       /**
-       * <code>optional string templateName = 4;</code>
+       * <code>string templateName = 4;</code>
        */
       public java.lang.String getTemplateName() {
         java.lang.Object ref = templateName_;
@@ -707,7 +726,7 @@ public final class EntityTypeProto {
         }
       }
       /**
-       * <code>optional string templateName = 4;</code>
+       * <code>string templateName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTemplateNameBytes() {
@@ -723,7 +742,7 @@ public final class EntityTypeProto {
         }
       }
       /**
-       * <code>optional string templateName = 4;</code>
+       * <code>string templateName = 4;</code>
        */
       public Builder setTemplateName(
           java.lang.String value) {
@@ -736,7 +755,7 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <code>optional string templateName = 4;</code>
+       * <code>string templateName = 4;</code>
        */
       public Builder clearTemplateName() {
         
@@ -745,7 +764,7 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <code>optional string templateName = 4;</code>
+       * <code>string templateName = 4;</code>
        */
       public Builder setTemplateNameBytes(
           com.google.protobuf.ByteString value) {
@@ -767,7 +786,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       public boolean hasAiData() {
         return aiDataBuilder_ != null || aiData_ != null;
@@ -777,7 +796,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       public com.reis.game.resource.prototype.AI.AIData getAiData() {
         if (aiDataBuilder_ == null) {
@@ -791,7 +810,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       public Builder setAiData(com.reis.game.resource.prototype.AI.AIData value) {
         if (aiDataBuilder_ == null) {
@@ -811,7 +830,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       public Builder setAiData(
           com.reis.game.resource.prototype.AI.AIData.Builder builderForValue) {
@@ -829,7 +848,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       public Builder mergeAiData(com.reis.game.resource.prototype.AI.AIData value) {
         if (aiDataBuilder_ == null) {
@@ -851,7 +870,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       public Builder clearAiData() {
         if (aiDataBuilder_ == null) {
@@ -869,7 +888,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       public com.reis.game.resource.prototype.AI.AIData.Builder getAiDataBuilder() {
         
@@ -881,7 +900,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       public com.reis.game.resource.prototype.AI.AIDataOrBuilder getAiDataOrBuilder() {
         if (aiDataBuilder_ != null) {
@@ -896,7 +915,7 @@ public final class EntityTypeProto {
        *int32 entityTypeId = 4;
        * </pre>
        *
-       * <code>optional .AIData aiData = 5;</code>
+       * <code>.AIData aiData = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.reis.game.resource.prototype.AI.AIData, com.reis.game.resource.prototype.AI.AIData.Builder, com.reis.game.resource.prototype.AI.AIDataOrBuilder> 
@@ -913,12 +932,12 @@ public final class EntityTypeProto {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -1005,6 +1024,7 @@ public final class EntityTypeProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:EntityClassData)
       EntityClassDataOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use EntityClassData.newBuilder() to construct.
     private EntityClassData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -1015,7 +1035,7 @@ public final class EntityTypeProto {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private EntityClassData(
         com.google.protobuf.CodedInputStream input,
@@ -1023,6 +1043,8 @@ public final class EntityTypeProto {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1032,7 +1054,8 @@ public final class EntityTypeProto {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1058,6 +1081,7 @@ public final class EntityTypeProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1178,6 +1202,7 @@ public final class EntityTypeProto {
           internalGetEntityTypeForId(),
           EntityTypeForIdDefaultEntryHolder.defaultEntry,
           1);
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1195,11 +1220,11 @@ public final class EntityTypeProto {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, entityTypeForId__);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1213,6 +1238,7 @@ public final class EntityTypeProto {
       boolean result = true;
       result = result && internalGetEntityTypeForId().equals(
           other.internalGetEntityTypeForId());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -1222,7 +1248,7 @@ public final class EntityTypeProto {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (!internalGetEntityTypeForId().getMap().isEmpty()) {
         hash = (37 * hash) + ENTITYTYPEFORID_FIELD_NUMBER;
         hash = (53 * hash) + internalGetEntityTypeForId().hashCode();
@@ -1232,6 +1258,17 @@ public final class EntityTypeProto {
       return hash;
     }
 
+    public static com.reis.game.resource.prototype.EntityTypeProto.EntityClassData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.reis.game.resource.prototype.EntityTypeProto.EntityClassData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.reis.game.resource.prototype.EntityTypeProto.EntityClassData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1402,7 +1439,7 @@ public final class EntityTypeProto {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -1415,12 +1452,12 @@ public final class EntityTypeProto {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1436,6 +1473,7 @@ public final class EntityTypeProto {
         if (other == com.reis.game.resource.prototype.EntityTypeProto.EntityClassData.getDefaultInstance()) return this;
         internalGetMutableEntityTypeForId().mergeFrom(
             other.internalGetEntityTypeForId());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1540,7 +1578,8 @@ public final class EntityTypeProto {
       }
 
       public Builder clearEntityTypeForId() {
-        getMutableEntityTypeForId().clear();
+        internalGetMutableEntityTypeForId().getMutableMap()
+            .clear();
         return this;
       }
       /**
@@ -1550,7 +1589,8 @@ public final class EntityTypeProto {
       public Builder removeEntityTypeForId(
           int key) {
         
-        getMutableEntityTypeForId().remove(key);
+        internalGetMutableEntityTypeForId().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
@@ -1569,7 +1609,8 @@ public final class EntityTypeProto {
           java.lang.String value) {
         
         if (value == null) { throw new java.lang.NullPointerException(); }
-        getMutableEntityTypeForId().put(key, value);
+        internalGetMutableEntityTypeForId().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
@@ -1578,17 +1619,18 @@ public final class EntityTypeProto {
 
       public Builder putAllEntityTypeForId(
           java.util.Map<java.lang.Integer, java.lang.String> values) {
-        getMutableEntityTypeForId().putAll(values);
+        internalGetMutableEntityTypeForId().getMutableMap()
+            .putAll(values);
         return this;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 

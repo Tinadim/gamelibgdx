@@ -5,6 +5,7 @@ import com.reis.game.entity.GameEntity;
 import com.reis.game.entity.ai.implementation.WanderingAi;
 import com.reis.game.entity.components.EntityControllerComponent;
 import com.reis.game.entity.components.BodyComponent;
+import com.reis.game.entity.components.InteractionComponent;
 import com.reis.game.entity.components.MovementComponent;
 import com.reis.game.entity.components.SpriteComponent;
 import com.reis.game.resource.prototype.AI.AIData;
@@ -21,6 +22,7 @@ public class NpcTemplate extends EntityTemplate {
         AIData aiData = data.getAiData();
 
         entity.add(new SpriteComponent(entity, Color.BLUE));
+        entity.add(new InteractionComponent(entity));
         entity.add(new BodyComponent(entity));
         entity.add(new MovementComponent(entity));
         entity.add(new EntityControllerComponent(entity, new WanderingAi(entity, aiData)));

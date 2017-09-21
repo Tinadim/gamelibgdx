@@ -1,10 +1,12 @@
 package com.reis.game.application;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.reis.game.application.state.ApplicationState;
 import com.reis.game.application.state.InitialState;
 import com.reis.game.application.state.PlayState;
+import com.reis.game.input.InputHandler;
 import com.reis.game.mechanics.collision.CollisionListener;
 import com.reis.game.state.GameState;
 import com.reis.game.state.StateManager;
@@ -43,7 +45,7 @@ public final class GameManager {
         ApplicationState currentState = null;
         try {
             currentState = stateList.pop();
-        } catch(NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
 
         } finally {
             if(currentState != null) {
@@ -61,6 +63,7 @@ public final class GameManager {
         GameState gameState = StateManager.createInitialState();
         PlayState playState = new PlayState(gameState);
         setApplicationState(playState);
+        Gdx.input.setInputProcessor(new InputHandler());
     }
 
     public static void loadGame() {

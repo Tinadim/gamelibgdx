@@ -12,13 +12,7 @@ import com.reis.game.contants.GameConstants;
 import com.reis.game.contants.SceneConstants;
 import com.reis.game.entity.components.BodyComponent;
 import com.reis.game.entity.components.EntityComponent;
-import com.reis.game.mechanics.TileEntityMap;
-import com.reis.game.scene.SceneManager;
 import com.reis.game.scene.dialog.DialogManager;
-import com.reis.game.util.MapUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by bernardoreis on 11/17/16.
@@ -26,29 +20,26 @@ import java.util.List;
 
 public class GameEntity extends Group implements GameConstants, SceneConstants {
 
-    protected final int id;
+    public final int id;
     protected int row, col;
     protected int tileWidth, tileHeight;
     protected int orientation = 0;
-    protected boolean interactive = true;
 
     protected Bag<EntityComponent> components;
     private Array<EntityComponent> componentsArray;
     private ImmutableArray<EntityComponent> immutableComponentsArray;
-
-    protected String dialog;
 
     public GameEntity(int id) {
         this(id, 0, 0);
     }
 
     public GameEntity(int id, int col, int row) {
+        this.id = id;
         this.components = new Bag<EntityComponent>(16);
         this.componentsArray = new Array<EntityComponent>(false, 16);
         this.immutableComponentsArray = new ImmutableArray<EntityComponent>(componentsArray);
-        this.id = id;
-        this.dialog = DialogManager.getDialogForEntity(this);
         this.setCoordinates(col, row);
+        this.setName(String.valueOf(id));
     }
 
     public <T extends EntityComponent> T getComponent (Class<? extends Component> componentClass) {
@@ -110,7 +101,6 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
         if (removeComponent != null) {
             components.set(componentTypeIndex, null);
             componentsArray.removeValue(removeComponent, true);
-
             return true;
         }
 
@@ -120,15 +110,17 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
     @Override
     public void act(float delta) {
         super.act(delta);
-        for(EntityComponent component : getComponents())
+        for (EntityComponent component : getComponents()) {
             component.update(this, delta);
+        }
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        for(EntityComponent component : getComponents())
+        for (EntityComponent component : getComponents()) {
             component.draw(this, batch, this.getColor().a);
+        }
     }
 
     public void moveBy(Vector2 vector) {
@@ -157,10 +149,6 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
 
     private void calcSize(int tileWidth, int tileHeight) {
         this.setSize(tileWidth * TILE_SIZE, tileHeight * TILE_SIZE);
-    }
-
-    public void interact() {
-
     }
 
     public int getId() {
@@ -209,13 +197,5 @@ public class GameEntity extends Group implements GameConstants, SceneConstants {
 
     public void setOrientation(int orientation) {
         this.orientation = orientation;
-    }
-
-    public boolean isInteractive() {
-        return interactive;
-    }
-
-    public void setInteractive(boolean interactive) {
-        this.interactive = interactive;
     }
 }

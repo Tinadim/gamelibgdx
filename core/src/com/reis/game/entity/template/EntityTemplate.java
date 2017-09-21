@@ -13,6 +13,8 @@ public class EntityTemplate {
     public int width = 1;
     public int height = 1;
 
+    //TODO create data wrappers for other components just like AiData
+
     public void applyToEntity(GameEntity entity, EntityData data) {
         entity.setTileSize(width, height);
         initComponents(entity, data);

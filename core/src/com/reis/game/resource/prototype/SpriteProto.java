@@ -19,42 +19,42 @@ public final class SpriteProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 x = 1;</code>
+     * <code>int32 x = 1;</code>
      */
     int getX();
 
     /**
-     * <code>optional int32 y = 2;</code>
+     * <code>int32 y = 2;</code>
      */
     int getY();
 
     /**
-     * <code>optional int32 textureX = 3;</code>
+     * <code>int32 textureX = 3;</code>
      */
     int getTextureX();
 
     /**
-     * <code>optional int32 textureY = 4;</code>
+     * <code>int32 textureY = 4;</code>
      */
     int getTextureY();
 
     /**
-     * <code>optional int32 width = 5;</code>
+     * <code>int32 width = 5;</code>
      */
     int getWidth();
 
     /**
-     * <code>optional int32 height = 6;</code>
+     * <code>int32 height = 6;</code>
      */
     int getHeight();
 
     /**
-     * <code>optional int32 anchorX = 7;</code>
+     * <code>int32 anchorX = 7;</code>
      */
     int getAnchorX();
 
     /**
-     * <code>optional int32 anchorY = 8;</code>
+     * <code>int32 anchorY = 8;</code>
      */
     int getAnchorY();
   }
@@ -65,6 +65,7 @@ public final class SpriteProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SpriteData)
       SpriteDataOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use SpriteData.newBuilder() to construct.
     private SpriteData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -83,7 +84,7 @@ public final class SpriteProto {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private SpriteData(
         com.google.protobuf.CodedInputStream input,
@@ -91,6 +92,8 @@ public final class SpriteProto {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -100,7 +103,8 @@ public final class SpriteProto {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -153,6 +157,7 @@ public final class SpriteProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -171,7 +176,7 @@ public final class SpriteProto {
     public static final int X_FIELD_NUMBER = 1;
     private int x_;
     /**
-     * <code>optional int32 x = 1;</code>
+     * <code>int32 x = 1;</code>
      */
     public int getX() {
       return x_;
@@ -180,7 +185,7 @@ public final class SpriteProto {
     public static final int Y_FIELD_NUMBER = 2;
     private int y_;
     /**
-     * <code>optional int32 y = 2;</code>
+     * <code>int32 y = 2;</code>
      */
     public int getY() {
       return y_;
@@ -189,7 +194,7 @@ public final class SpriteProto {
     public static final int TEXTUREX_FIELD_NUMBER = 3;
     private int textureX_;
     /**
-     * <code>optional int32 textureX = 3;</code>
+     * <code>int32 textureX = 3;</code>
      */
     public int getTextureX() {
       return textureX_;
@@ -198,7 +203,7 @@ public final class SpriteProto {
     public static final int TEXTUREY_FIELD_NUMBER = 4;
     private int textureY_;
     /**
-     * <code>optional int32 textureY = 4;</code>
+     * <code>int32 textureY = 4;</code>
      */
     public int getTextureY() {
       return textureY_;
@@ -207,7 +212,7 @@ public final class SpriteProto {
     public static final int WIDTH_FIELD_NUMBER = 5;
     private int width_;
     /**
-     * <code>optional int32 width = 5;</code>
+     * <code>int32 width = 5;</code>
      */
     public int getWidth() {
       return width_;
@@ -216,7 +221,7 @@ public final class SpriteProto {
     public static final int HEIGHT_FIELD_NUMBER = 6;
     private int height_;
     /**
-     * <code>optional int32 height = 6;</code>
+     * <code>int32 height = 6;</code>
      */
     public int getHeight() {
       return height_;
@@ -225,7 +230,7 @@ public final class SpriteProto {
     public static final int ANCHORX_FIELD_NUMBER = 7;
     private int anchorX_;
     /**
-     * <code>optional int32 anchorX = 7;</code>
+     * <code>int32 anchorX = 7;</code>
      */
     public int getAnchorX() {
       return anchorX_;
@@ -234,7 +239,7 @@ public final class SpriteProto {
     public static final int ANCHORY_FIELD_NUMBER = 8;
     private int anchorY_;
     /**
-     * <code>optional int32 anchorY = 8;</code>
+     * <code>int32 anchorY = 8;</code>
      */
     public int getAnchorY() {
       return anchorY_;
@@ -276,6 +281,7 @@ public final class SpriteProto {
       if (anchorY_ != 0) {
         output.writeInt32(8, anchorY_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -315,11 +321,11 @@ public final class SpriteProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(8, anchorY_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -347,6 +353,7 @@ public final class SpriteProto {
           == other.getAnchorX());
       result = result && (getAnchorY()
           == other.getAnchorY());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -356,7 +363,7 @@ public final class SpriteProto {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + X_FIELD_NUMBER;
       hash = (53 * hash) + getX();
       hash = (37 * hash) + Y_FIELD_NUMBER;
@@ -378,6 +385,17 @@ public final class SpriteProto {
       return hash;
     }
 
+    public static com.reis.game.resource.prototype.SpriteProto.SpriteData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.reis.game.resource.prototype.SpriteProto.SpriteData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.reis.game.resource.prototype.SpriteProto.SpriteData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -546,7 +564,7 @@ public final class SpriteProto {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -559,12 +577,12 @@ public final class SpriteProto {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -602,6 +620,7 @@ public final class SpriteProto {
         if (other.getAnchorY() != 0) {
           setAnchorY(other.getAnchorY());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -630,13 +649,13 @@ public final class SpriteProto {
 
       private int x_ ;
       /**
-       * <code>optional int32 x = 1;</code>
+       * <code>int32 x = 1;</code>
        */
       public int getX() {
         return x_;
       }
       /**
-       * <code>optional int32 x = 1;</code>
+       * <code>int32 x = 1;</code>
        */
       public Builder setX(int value) {
         
@@ -645,7 +664,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 x = 1;</code>
+       * <code>int32 x = 1;</code>
        */
       public Builder clearX() {
         
@@ -656,13 +675,13 @@ public final class SpriteProto {
 
       private int y_ ;
       /**
-       * <code>optional int32 y = 2;</code>
+       * <code>int32 y = 2;</code>
        */
       public int getY() {
         return y_;
       }
       /**
-       * <code>optional int32 y = 2;</code>
+       * <code>int32 y = 2;</code>
        */
       public Builder setY(int value) {
         
@@ -671,7 +690,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 y = 2;</code>
+       * <code>int32 y = 2;</code>
        */
       public Builder clearY() {
         
@@ -682,13 +701,13 @@ public final class SpriteProto {
 
       private int textureX_ ;
       /**
-       * <code>optional int32 textureX = 3;</code>
+       * <code>int32 textureX = 3;</code>
        */
       public int getTextureX() {
         return textureX_;
       }
       /**
-       * <code>optional int32 textureX = 3;</code>
+       * <code>int32 textureX = 3;</code>
        */
       public Builder setTextureX(int value) {
         
@@ -697,7 +716,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 textureX = 3;</code>
+       * <code>int32 textureX = 3;</code>
        */
       public Builder clearTextureX() {
         
@@ -708,13 +727,13 @@ public final class SpriteProto {
 
       private int textureY_ ;
       /**
-       * <code>optional int32 textureY = 4;</code>
+       * <code>int32 textureY = 4;</code>
        */
       public int getTextureY() {
         return textureY_;
       }
       /**
-       * <code>optional int32 textureY = 4;</code>
+       * <code>int32 textureY = 4;</code>
        */
       public Builder setTextureY(int value) {
         
@@ -723,7 +742,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 textureY = 4;</code>
+       * <code>int32 textureY = 4;</code>
        */
       public Builder clearTextureY() {
         
@@ -734,13 +753,13 @@ public final class SpriteProto {
 
       private int width_ ;
       /**
-       * <code>optional int32 width = 5;</code>
+       * <code>int32 width = 5;</code>
        */
       public int getWidth() {
         return width_;
       }
       /**
-       * <code>optional int32 width = 5;</code>
+       * <code>int32 width = 5;</code>
        */
       public Builder setWidth(int value) {
         
@@ -749,7 +768,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 width = 5;</code>
+       * <code>int32 width = 5;</code>
        */
       public Builder clearWidth() {
         
@@ -760,13 +779,13 @@ public final class SpriteProto {
 
       private int height_ ;
       /**
-       * <code>optional int32 height = 6;</code>
+       * <code>int32 height = 6;</code>
        */
       public int getHeight() {
         return height_;
       }
       /**
-       * <code>optional int32 height = 6;</code>
+       * <code>int32 height = 6;</code>
        */
       public Builder setHeight(int value) {
         
@@ -775,7 +794,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 height = 6;</code>
+       * <code>int32 height = 6;</code>
        */
       public Builder clearHeight() {
         
@@ -786,13 +805,13 @@ public final class SpriteProto {
 
       private int anchorX_ ;
       /**
-       * <code>optional int32 anchorX = 7;</code>
+       * <code>int32 anchorX = 7;</code>
        */
       public int getAnchorX() {
         return anchorX_;
       }
       /**
-       * <code>optional int32 anchorX = 7;</code>
+       * <code>int32 anchorX = 7;</code>
        */
       public Builder setAnchorX(int value) {
         
@@ -801,7 +820,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 anchorX = 7;</code>
+       * <code>int32 anchorX = 7;</code>
        */
       public Builder clearAnchorX() {
         
@@ -812,13 +831,13 @@ public final class SpriteProto {
 
       private int anchorY_ ;
       /**
-       * <code>optional int32 anchorY = 8;</code>
+       * <code>int32 anchorY = 8;</code>
        */
       public int getAnchorY() {
         return anchorY_;
       }
       /**
-       * <code>optional int32 anchorY = 8;</code>
+       * <code>int32 anchorY = 8;</code>
        */
       public Builder setAnchorY(int value) {
         
@@ -827,7 +846,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 anchorY = 8;</code>
+       * <code>int32 anchorY = 8;</code>
        */
       public Builder clearAnchorY() {
         
@@ -837,12 +856,12 @@ public final class SpriteProto {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -889,30 +908,30 @@ public final class SpriteProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 textureX = 1;</code>
+     * <code>int32 textureX = 1;</code>
      */
     int getTextureX();
 
     /**
-     * <code>optional int32 textureY = 2;</code>
+     * <code>int32 textureY = 2;</code>
      */
     int getTextureY();
 
     /**
-     * <code>optional int32 numSprites = 3;</code>
+     * <code>int32 numSprites = 3;</code>
      */
     int getNumSprites();
 
     /**
-     * <code>optional .SpriteData spriteData = 4;</code>
+     * <code>.SpriteData spriteData = 4;</code>
      */
     boolean hasSpriteData();
     /**
-     * <code>optional .SpriteData spriteData = 4;</code>
+     * <code>.SpriteData spriteData = 4;</code>
      */
     com.reis.game.resource.prototype.SpriteProto.SpriteData getSpriteData();
     /**
-     * <code>optional .SpriteData spriteData = 4;</code>
+     * <code>.SpriteData spriteData = 4;</code>
      */
     com.reis.game.resource.prototype.SpriteProto.SpriteDataOrBuilder getSpriteDataOrBuilder();
   }
@@ -923,6 +942,7 @@ public final class SpriteProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SpriteArrayData)
       SpriteArrayDataOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use SpriteArrayData.newBuilder() to construct.
     private SpriteArrayData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -936,7 +956,7 @@ public final class SpriteProto {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private SpriteArrayData(
         com.google.protobuf.CodedInputStream input,
@@ -944,6 +964,8 @@ public final class SpriteProto {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -953,7 +975,8 @@ public final class SpriteProto {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -994,6 +1017,7 @@ public final class SpriteProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1012,7 +1036,7 @@ public final class SpriteProto {
     public static final int TEXTUREX_FIELD_NUMBER = 1;
     private int textureX_;
     /**
-     * <code>optional int32 textureX = 1;</code>
+     * <code>int32 textureX = 1;</code>
      */
     public int getTextureX() {
       return textureX_;
@@ -1021,7 +1045,7 @@ public final class SpriteProto {
     public static final int TEXTUREY_FIELD_NUMBER = 2;
     private int textureY_;
     /**
-     * <code>optional int32 textureY = 2;</code>
+     * <code>int32 textureY = 2;</code>
      */
     public int getTextureY() {
       return textureY_;
@@ -1030,7 +1054,7 @@ public final class SpriteProto {
     public static final int NUMSPRITES_FIELD_NUMBER = 3;
     private int numSprites_;
     /**
-     * <code>optional int32 numSprites = 3;</code>
+     * <code>int32 numSprites = 3;</code>
      */
     public int getNumSprites() {
       return numSprites_;
@@ -1039,19 +1063,19 @@ public final class SpriteProto {
     public static final int SPRITEDATA_FIELD_NUMBER = 4;
     private com.reis.game.resource.prototype.SpriteProto.SpriteData spriteData_;
     /**
-     * <code>optional .SpriteData spriteData = 4;</code>
+     * <code>.SpriteData spriteData = 4;</code>
      */
     public boolean hasSpriteData() {
       return spriteData_ != null;
     }
     /**
-     * <code>optional .SpriteData spriteData = 4;</code>
+     * <code>.SpriteData spriteData = 4;</code>
      */
     public com.reis.game.resource.prototype.SpriteProto.SpriteData getSpriteData() {
       return spriteData_ == null ? com.reis.game.resource.prototype.SpriteProto.SpriteData.getDefaultInstance() : spriteData_;
     }
     /**
-     * <code>optional .SpriteData spriteData = 4;</code>
+     * <code>.SpriteData spriteData = 4;</code>
      */
     public com.reis.game.resource.prototype.SpriteProto.SpriteDataOrBuilder getSpriteDataOrBuilder() {
       return getSpriteData();
@@ -1081,6 +1105,7 @@ public final class SpriteProto {
       if (spriteData_ != null) {
         output.writeMessage(4, getSpriteData());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1104,11 +1129,11 @@ public final class SpriteProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getSpriteData());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1131,6 +1156,7 @@ public final class SpriteProto {
         result = result && getSpriteData()
             .equals(other.getSpriteData());
       }
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -1140,7 +1166,7 @@ public final class SpriteProto {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TEXTUREX_FIELD_NUMBER;
       hash = (53 * hash) + getTextureX();
       hash = (37 * hash) + TEXTUREY_FIELD_NUMBER;
@@ -1156,6 +1182,17 @@ public final class SpriteProto {
       return hash;
     }
 
+    public static com.reis.game.resource.prototype.SpriteProto.SpriteArrayData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.reis.game.resource.prototype.SpriteProto.SpriteArrayData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.reis.game.resource.prototype.SpriteProto.SpriteArrayData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1320,7 +1357,7 @@ public final class SpriteProto {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -1333,12 +1370,12 @@ public final class SpriteProto {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1364,6 +1401,7 @@ public final class SpriteProto {
         if (other.hasSpriteData()) {
           mergeSpriteData(other.getSpriteData());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1392,13 +1430,13 @@ public final class SpriteProto {
 
       private int textureX_ ;
       /**
-       * <code>optional int32 textureX = 1;</code>
+       * <code>int32 textureX = 1;</code>
        */
       public int getTextureX() {
         return textureX_;
       }
       /**
-       * <code>optional int32 textureX = 1;</code>
+       * <code>int32 textureX = 1;</code>
        */
       public Builder setTextureX(int value) {
         
@@ -1407,7 +1445,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 textureX = 1;</code>
+       * <code>int32 textureX = 1;</code>
        */
       public Builder clearTextureX() {
         
@@ -1418,13 +1456,13 @@ public final class SpriteProto {
 
       private int textureY_ ;
       /**
-       * <code>optional int32 textureY = 2;</code>
+       * <code>int32 textureY = 2;</code>
        */
       public int getTextureY() {
         return textureY_;
       }
       /**
-       * <code>optional int32 textureY = 2;</code>
+       * <code>int32 textureY = 2;</code>
        */
       public Builder setTextureY(int value) {
         
@@ -1433,7 +1471,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 textureY = 2;</code>
+       * <code>int32 textureY = 2;</code>
        */
       public Builder clearTextureY() {
         
@@ -1444,13 +1482,13 @@ public final class SpriteProto {
 
       private int numSprites_ ;
       /**
-       * <code>optional int32 numSprites = 3;</code>
+       * <code>int32 numSprites = 3;</code>
        */
       public int getNumSprites() {
         return numSprites_;
       }
       /**
-       * <code>optional int32 numSprites = 3;</code>
+       * <code>int32 numSprites = 3;</code>
        */
       public Builder setNumSprites(int value) {
         
@@ -1459,7 +1497,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional int32 numSprites = 3;</code>
+       * <code>int32 numSprites = 3;</code>
        */
       public Builder clearNumSprites() {
         
@@ -1472,13 +1510,13 @@ public final class SpriteProto {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.reis.game.resource.prototype.SpriteProto.SpriteData, com.reis.game.resource.prototype.SpriteProto.SpriteData.Builder, com.reis.game.resource.prototype.SpriteProto.SpriteDataOrBuilder> spriteDataBuilder_;
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       public boolean hasSpriteData() {
         return spriteDataBuilder_ != null || spriteData_ != null;
       }
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       public com.reis.game.resource.prototype.SpriteProto.SpriteData getSpriteData() {
         if (spriteDataBuilder_ == null) {
@@ -1488,7 +1526,7 @@ public final class SpriteProto {
         }
       }
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       public Builder setSpriteData(com.reis.game.resource.prototype.SpriteProto.SpriteData value) {
         if (spriteDataBuilder_ == null) {
@@ -1504,7 +1542,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       public Builder setSpriteData(
           com.reis.game.resource.prototype.SpriteProto.SpriteData.Builder builderForValue) {
@@ -1518,7 +1556,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       public Builder mergeSpriteData(com.reis.game.resource.prototype.SpriteProto.SpriteData value) {
         if (spriteDataBuilder_ == null) {
@@ -1536,7 +1574,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       public Builder clearSpriteData() {
         if (spriteDataBuilder_ == null) {
@@ -1550,7 +1588,7 @@ public final class SpriteProto {
         return this;
       }
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       public com.reis.game.resource.prototype.SpriteProto.SpriteData.Builder getSpriteDataBuilder() {
         
@@ -1558,7 +1596,7 @@ public final class SpriteProto {
         return getSpriteDataFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       public com.reis.game.resource.prototype.SpriteProto.SpriteDataOrBuilder getSpriteDataOrBuilder() {
         if (spriteDataBuilder_ != null) {
@@ -1569,7 +1607,7 @@ public final class SpriteProto {
         }
       }
       /**
-       * <code>optional .SpriteData spriteData = 4;</code>
+       * <code>.SpriteData spriteData = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.reis.game.resource.prototype.SpriteProto.SpriteData, com.reis.game.resource.prototype.SpriteProto.SpriteData.Builder, com.reis.game.resource.prototype.SpriteProto.SpriteDataOrBuilder> 
@@ -1586,12 +1624,12 @@ public final class SpriteProto {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
