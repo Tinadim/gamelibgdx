@@ -19,7 +19,7 @@ public class PlayerTemplate extends EntityTemplate {
 
     @Override
     public void initComponents(GameEntity entity, EntityData data) {
-        entity.add(new SpriteComponent(entity, Color.BLACK));
+        entity.add(new SpriteComponent(entity, data, Color.BLACK));
         entity.add(new InteractionComponent(entity));
         entity.add(new EntityControllerComponent(entity, new PlayerController(entity)));
         entity.add(new MovementComponent(entity));

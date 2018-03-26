@@ -21,7 +21,7 @@ public class NpcTemplate extends EntityTemplate {
 
         AIData aiData = data.getAiData();
 
-        entity.add(new SpriteComponent(entity, Color.BLUE));
+        entity.add(new SpriteComponent(entity, data, Color.BLUE));
         entity.add(new InteractionComponent(entity));
         entity.add(new BodyComponent(entity));
         entity.add(new MovementComponent(entity));

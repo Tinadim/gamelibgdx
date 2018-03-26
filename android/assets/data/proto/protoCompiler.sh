@@ -1,7 +1,7 @@
 #!/bin/bash
 DEST=$(cd ../../../../core/src; pwd)
 protoc ai.proto --java_out="$DEST"
-#protoc animation.proto --java_out=."$DEST"
+protoc animation.proto --java_out="$DEST"
 #protoc entity.proto --java_out=."$DEST"
 protoc entityType.proto --java_out="$DEST"
 #protoc overlay.proto --java_out=."$DEST"

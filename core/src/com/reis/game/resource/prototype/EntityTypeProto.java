@@ -44,29 +44,42 @@ public final class EntityTypeProto {
         getTemplateNameBytes();
 
     /**
-     * <pre>
-     *int32 entityTypeId = 4;
-     * </pre>
-     *
      * <code>.AIData aiData = 5;</code>
      */
     boolean hasAiData();
     /**
-     * <pre>
-     *int32 entityTypeId = 4;
-     * </pre>
-     *
      * <code>.AIData aiData = 5;</code>
      */
     com.reis.game.resource.prototype.AI.AIData getAiData();
+    /**
+     * <code>.AIData aiData = 5;</code>
+     */
+    com.reis.game.resource.prototype.AI.AIDataOrBuilder getAiDataOrBuilder();
+
     /**
      * <pre>
      *int32 entityTypeId = 4;
      * </pre>
      *
-     * <code>.AIData aiData = 5;</code>
+     * <code>.AnimationData animationData = 6;</code>
      */
-    com.reis.game.resource.prototype.AI.AIDataOrBuilder getAiDataOrBuilder();
+    boolean hasAnimationData();
+    /**
+     * <pre>
+     *int32 entityTypeId = 4;
+     * </pre>
+     *
+     * <code>.AnimationData animationData = 6;</code>
+     */
+    com.reis.game.resource.prototype.AnimationProto.AnimationData getAnimationData();
+    /**
+     * <pre>
+     *int32 entityTypeId = 4;
+     * </pre>
+     *
+     * <code>.AnimationData animationData = 6;</code>
+     */
+    com.reis.game.resource.prototype.AnimationProto.AnimationDataOrBuilder getAnimationDataOrBuilder();
   }
   /**
    * Protobuf type {@code EntityData}
@@ -145,6 +158,19 @@ public final class EntityTypeProto {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(aiData_);
                 aiData_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 50: {
+              com.reis.game.resource.prototype.AnimationProto.AnimationData.Builder subBuilder = null;
+              if (animationData_ != null) {
+                subBuilder = animationData_.toBuilder();
+              }
+              animationData_ = input.readMessage(com.reis.game.resource.prototype.AnimationProto.AnimationData.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(animationData_);
+                animationData_ = subBuilder.buildPartial();
               }
 
               break;
@@ -237,34 +263,55 @@ public final class EntityTypeProto {
     public static final int AIDATA_FIELD_NUMBER = 5;
     private com.reis.game.resource.prototype.AI.AIData aiData_;
     /**
-     * <pre>
-     *int32 entityTypeId = 4;
-     * </pre>
-     *
      * <code>.AIData aiData = 5;</code>
      */
     public boolean hasAiData() {
       return aiData_ != null;
     }
     /**
-     * <pre>
-     *int32 entityTypeId = 4;
-     * </pre>
-     *
      * <code>.AIData aiData = 5;</code>
      */
     public com.reis.game.resource.prototype.AI.AIData getAiData() {
       return aiData_ == null ? com.reis.game.resource.prototype.AI.AIData.getDefaultInstance() : aiData_;
     }
     /**
-     * <pre>
-     *int32 entityTypeId = 4;
-     * </pre>
-     *
      * <code>.AIData aiData = 5;</code>
      */
     public com.reis.game.resource.prototype.AI.AIDataOrBuilder getAiDataOrBuilder() {
       return getAiData();
+    }
+
+    public static final int ANIMATIONDATA_FIELD_NUMBER = 6;
+    private com.reis.game.resource.prototype.AnimationProto.AnimationData animationData_;
+    /**
+     * <pre>
+     *int32 entityTypeId = 4;
+     * </pre>
+     *
+     * <code>.AnimationData animationData = 6;</code>
+     */
+    public boolean hasAnimationData() {
+      return animationData_ != null;
+    }
+    /**
+     * <pre>
+     *int32 entityTypeId = 4;
+     * </pre>
+     *
+     * <code>.AnimationData animationData = 6;</code>
+     */
+    public com.reis.game.resource.prototype.AnimationProto.AnimationData getAnimationData() {
+      return animationData_ == null ? com.reis.game.resource.prototype.AnimationProto.AnimationData.getDefaultInstance() : animationData_;
+    }
+    /**
+     * <pre>
+     *int32 entityTypeId = 4;
+     * </pre>
+     *
+     * <code>.AnimationData animationData = 6;</code>
+     */
+    public com.reis.game.resource.prototype.AnimationProto.AnimationDataOrBuilder getAnimationDataOrBuilder() {
+      return getAnimationData();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -294,6 +341,9 @@ public final class EntityTypeProto {
       if (aiData_ != null) {
         output.writeMessage(5, getAiData());
       }
+      if (animationData_ != null) {
+        output.writeMessage(6, getAnimationData());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -320,6 +370,10 @@ public final class EntityTypeProto {
       if (aiData_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getAiData());
+      }
+      if (animationData_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getAnimationData());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -350,6 +404,11 @@ public final class EntityTypeProto {
         result = result && getAiData()
             .equals(other.getAiData());
       }
+      result = result && (hasAnimationData() == other.hasAnimationData());
+      if (hasAnimationData()) {
+        result = result && getAnimationData()
+            .equals(other.getAnimationData());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -372,6 +431,10 @@ public final class EntityTypeProto {
       if (hasAiData()) {
         hash = (37 * hash) + AIDATA_FIELD_NUMBER;
         hash = (53 * hash) + getAiData().hashCode();
+      }
+      if (hasAnimationData()) {
+        hash = (37 * hash) + ANIMATIONDATA_FIELD_NUMBER;
+        hash = (53 * hash) + getAnimationData().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -516,6 +579,12 @@ public final class EntityTypeProto {
           aiData_ = null;
           aiDataBuilder_ = null;
         }
+        if (animationDataBuilder_ == null) {
+          animationData_ = null;
+        } else {
+          animationData_ = null;
+          animationDataBuilder_ = null;
+        }
         return this;
       }
 
@@ -546,6 +615,11 @@ public final class EntityTypeProto {
           result.aiData_ = aiData_;
         } else {
           result.aiData_ = aiDataBuilder_.build();
+        }
+        if (animationDataBuilder_ == null) {
+          result.animationData_ = animationData_;
+        } else {
+          result.animationData_ = animationDataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -603,6 +677,9 @@ public final class EntityTypeProto {
         }
         if (other.hasAiData()) {
           mergeAiData(other.getAiData());
+        }
+        if (other.hasAnimationData()) {
+          mergeAnimationData(other.getAnimationData());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -782,20 +859,12 @@ public final class EntityTypeProto {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.reis.game.resource.prototype.AI.AIData, com.reis.game.resource.prototype.AI.AIData.Builder, com.reis.game.resource.prototype.AI.AIDataOrBuilder> aiDataBuilder_;
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       public boolean hasAiData() {
         return aiDataBuilder_ != null || aiData_ != null;
       }
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       public com.reis.game.resource.prototype.AI.AIData getAiData() {
@@ -806,10 +875,6 @@ public final class EntityTypeProto {
         }
       }
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       public Builder setAiData(com.reis.game.resource.prototype.AI.AIData value) {
@@ -826,10 +891,6 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       public Builder setAiData(
@@ -844,10 +905,6 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       public Builder mergeAiData(com.reis.game.resource.prototype.AI.AIData value) {
@@ -866,10 +923,6 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       public Builder clearAiData() {
@@ -884,10 +937,6 @@ public final class EntityTypeProto {
         return this;
       }
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       public com.reis.game.resource.prototype.AI.AIData.Builder getAiDataBuilder() {
@@ -896,10 +945,6 @@ public final class EntityTypeProto {
         return getAiDataFieldBuilder().getBuilder();
       }
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       public com.reis.game.resource.prototype.AI.AIDataOrBuilder getAiDataOrBuilder() {
@@ -911,10 +956,6 @@ public final class EntityTypeProto {
         }
       }
       /**
-       * <pre>
-       *int32 entityTypeId = 4;
-       * </pre>
-       *
        * <code>.AIData aiData = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -929,6 +970,159 @@ public final class EntityTypeProto {
           aiData_ = null;
         }
         return aiDataBuilder_;
+      }
+
+      private com.reis.game.resource.prototype.AnimationProto.AnimationData animationData_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.reis.game.resource.prototype.AnimationProto.AnimationData, com.reis.game.resource.prototype.AnimationProto.AnimationData.Builder, com.reis.game.resource.prototype.AnimationProto.AnimationDataOrBuilder> animationDataBuilder_;
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      public boolean hasAnimationData() {
+        return animationDataBuilder_ != null || animationData_ != null;
+      }
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      public com.reis.game.resource.prototype.AnimationProto.AnimationData getAnimationData() {
+        if (animationDataBuilder_ == null) {
+          return animationData_ == null ? com.reis.game.resource.prototype.AnimationProto.AnimationData.getDefaultInstance() : animationData_;
+        } else {
+          return animationDataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      public Builder setAnimationData(com.reis.game.resource.prototype.AnimationProto.AnimationData value) {
+        if (animationDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          animationData_ = value;
+          onChanged();
+        } else {
+          animationDataBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      public Builder setAnimationData(
+          com.reis.game.resource.prototype.AnimationProto.AnimationData.Builder builderForValue) {
+        if (animationDataBuilder_ == null) {
+          animationData_ = builderForValue.build();
+          onChanged();
+        } else {
+          animationDataBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      public Builder mergeAnimationData(com.reis.game.resource.prototype.AnimationProto.AnimationData value) {
+        if (animationDataBuilder_ == null) {
+          if (animationData_ != null) {
+            animationData_ =
+              com.reis.game.resource.prototype.AnimationProto.AnimationData.newBuilder(animationData_).mergeFrom(value).buildPartial();
+          } else {
+            animationData_ = value;
+          }
+          onChanged();
+        } else {
+          animationDataBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      public Builder clearAnimationData() {
+        if (animationDataBuilder_ == null) {
+          animationData_ = null;
+          onChanged();
+        } else {
+          animationData_ = null;
+          animationDataBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      public com.reis.game.resource.prototype.AnimationProto.AnimationData.Builder getAnimationDataBuilder() {
+        
+        onChanged();
+        return getAnimationDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      public com.reis.game.resource.prototype.AnimationProto.AnimationDataOrBuilder getAnimationDataOrBuilder() {
+        if (animationDataBuilder_ != null) {
+          return animationDataBuilder_.getMessageOrBuilder();
+        } else {
+          return animationData_ == null ?
+              com.reis.game.resource.prototype.AnimationProto.AnimationData.getDefaultInstance() : animationData_;
+        }
+      }
+      /**
+       * <pre>
+       *int32 entityTypeId = 4;
+       * </pre>
+       *
+       * <code>.AnimationData animationData = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.reis.game.resource.prototype.AnimationProto.AnimationData, com.reis.game.resource.prototype.AnimationProto.AnimationData.Builder, com.reis.game.resource.prototype.AnimationProto.AnimationDataOrBuilder> 
+          getAnimationDataFieldBuilder() {
+        if (animationDataBuilder_ == null) {
+          animationDataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.reis.game.resource.prototype.AnimationProto.AnimationData, com.reis.game.resource.prototype.AnimationProto.AnimationData.Builder, com.reis.game.resource.prototype.AnimationProto.AnimationDataOrBuilder>(
+                  getAnimationData(),
+                  getParentForChildren(),
+                  isClean());
+          animationData_ = null;
+        }
+        return animationDataBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1696,15 +1890,16 @@ public final class EntityTypeProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020entityType.proto\032\010ai.proto\"a\n\nEntityDa" +
-      "ta\022\n\n\002id\030\001 \001(\005\022\013\n\003row\030\002 \001(\005\022\013\n\003col\030\003 \001(\005" +
-      "\022\024\n\014templateName\030\004 \001(\t\022\027\n\006aiData\030\005 \001(\0132\007" +
-      ".AIData\"\211\001\n\017EntityClassData\022>\n\017entityTyp" +
-      "eForId\030\001 \003(\0132%.EntityClassData.EntityTyp" +
-      "eForIdEntry\0326\n\024EntityTypeForIdEntry\022\013\n\003k" +
-      "ey\030\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\001B3\n com.reis." +
-      "game.resource.prototypeB\017EntityTypeProto" +
-      "b\006proto3"
+      "\n\020entityType.proto\032\010ai.proto\032\017animation." +
+      "proto\"\210\001\n\nEntityData\022\n\n\002id\030\001 \001(\005\022\013\n\003row\030" +
+      "\002 \001(\005\022\013\n\003col\030\003 \001(\005\022\024\n\014templateName\030\004 \001(\t" +
+      "\022\027\n\006aiData\030\005 \001(\0132\007.AIData\022%\n\ranimationDa" +
+      "ta\030\006 \001(\0132\016.AnimationData\"\211\001\n\017EntityClass" +
+      "Data\022>\n\017entityTypeForId\030\001 \003(\0132%.EntityCl" +
+      "assData.EntityTypeForIdEntry\0326\n\024EntityTy" +
+      "peForIdEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\t" +
+      ":\0028\001B3\n com.reis.game.resource.prototype" +
+      "B\017EntityTypeProtob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1718,13 +1913,14 @@ public final class EntityTypeProto {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.reis.game.resource.prototype.AI.getDescriptor(),
+          com.reis.game.resource.prototype.AnimationProto.getDescriptor(),
         }, assigner);
     internal_static_EntityData_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_EntityData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_EntityData_descriptor,
-        new java.lang.String[] { "Id", "Row", "Col", "TemplateName", "AiData", });
+        new java.lang.String[] { "Id", "Row", "Col", "TemplateName", "AiData", "AnimationData", });
     internal_static_EntityClassData_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_EntityClassData_fieldAccessorTable = new
@@ -1738,6 +1934,7 @@ public final class EntityTypeProto {
         internal_static_EntityClassData_EntityTypeForIdEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     com.reis.game.resource.prototype.AI.getDescriptor();
+    com.reis.game.resource.prototype.AnimationProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

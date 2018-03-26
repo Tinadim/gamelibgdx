@@ -1,11 +1,8 @@
 package com.reis.game.entity.components;
 
 import com.reis.game.entity.GameEntity;
-import com.reis.game.entity.ai.EntityController;
 import com.reis.game.entity.ai.action.KnockbackAction;
-import com.reis.game.entity.ai.state.State;
 import com.reis.game.mechanics.battle.Attack;
-import com.reis.game.mechanics.collision.AttackHitbox;
 
 /**
  * Created by bernardoreis on 12/25/16.

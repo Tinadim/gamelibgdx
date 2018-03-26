@@ -12,6 +12,6 @@ public class EntityComparator implements Comparator<Actor> {
 
     @Override
     public int compare(Actor a1, Actor a2) {
-        return (int) (a1.getY() - a2.getY());
+        return (int) (a2.getY() - a1.getY());
     }
 }

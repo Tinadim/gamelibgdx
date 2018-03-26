@@ -48,8 +48,15 @@ public class PlayerInteractionHandler implements PlayerActionHandler {
     private void interact(Player player, PlayerController controller) {
         boolean actionSet = controller.forceAction(new InteractionAction());
         if (actionSet) {
+            adjustEntityOrientation(player);
             InteractionComponent component = player.getComponent(InteractionComponent.class);
             component.interact(this.entity);
         }
+    }
+
+    private void adjustEntityOrientation(Player player) {
+        int playerOrientation = player.getOrientation();
+        int orientation = (playerOrientation + 2) % 4;
+        this.entity.setOrientation(orientation);
     }
 }

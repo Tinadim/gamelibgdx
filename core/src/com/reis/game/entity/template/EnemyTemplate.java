@@ -21,7 +21,7 @@ public class EnemyTemplate extends EntityTemplate {
 
         AIData aiData = data.getAiData();
 
-        entity.add(new SpriteComponent(entity, Color.RED));
+        entity.add(new SpriteComponent(entity, data, Color.RED));
         entity.add(new BodyComponent(entity));
         entity.add(new CombatComponent(entity));
         entity.add(new MovementComponent(entity));
